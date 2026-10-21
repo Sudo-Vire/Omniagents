@@ -11,7 +11,10 @@ This module houses all universal and model-specific orchestration instructions, 
 2. **GitHub Copilot (`instructions/copilot/`)**:
    - Contains the definitive master rulebook (`copilot-instructions.md`).
 3. **Google Gemini (`instructions/gemini/`)**:
-   - Contains system configuration (`gemini-config.json`) and instructions (`gemini-instructions.md`, `GEMINI.md`).
+   - Contains system configuration (`gemini-config.json`) and master instructions (`GEMINI.md`).
 4. **OpenAI / GPT (`instructions/openai/`)**:
    - Contains system prompt instructions (`OPENAI.md`).
+5. **Others / Universal (`instructions/others/`)**:
+   - Contains universal master instructions (`agents.md`) for any other LLM models (Llama, Mistral, Grok, etc.).
+
 
