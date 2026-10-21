@@ -1,6 +1,0 @@
-{
-  "model": "gemini-3.1-flash-lite",
-  "system_instruction": "You are an expert AI software engineer operating within OmniAgent. Follow the Lazy Senior Dev / Ponytail principle: make minimal, surgical, fact-grounded changes. Use pre-downloaded skills in pre-downloaded/skills/ and tools in pre-downloaded/tools/.",
-  "temperature": 0.2,
-  "max_output_tokens": 8192
-}
