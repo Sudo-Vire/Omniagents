@@ -2,6 +2,16 @@
 
 Devian is an open-source, modular framework and ecosystem for advanced AI agents, micro-subagents, specialized skills, autonomous workflows, and local model gateway tooling.
 
+
+---
+
+## ⚙️ Makefile & Quick Commands
+
+If you have `make` installed, you can use convenient shortcuts:
+- `make install` - Run the autonomous installer
+- `make lint`    - Verify syntax and lint code
+- `make clean`   - Clean caches and build artifacts
+
 ---
 
 ## 📁 Repository Structure
