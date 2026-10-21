@@ -26,6 +26,15 @@ OmniAgent/
 
 ---
 
+
+---
+
+## 🧠 Orchestration Module (`orchestration/`)
+Created by **Sudo-Vire**, the orchestration module contains custom multi-agent instruction frameworks tailored for specific LLM runtimes:
+- **GitHub Copilot**: `orchestration/agents/copilot-instructions.md`
+- **Claude (Anthropic)**: `orchestration/agents/claude-instructions.md`
+- **Gemini (Google)**: `orchestration/agents/gemini-instructions.md`
+
 ## 🌐 Multi-Agent & Multi-Model Orchestration
 
 OmniAgent provides unified orchestration across leading AI models and assistants:
