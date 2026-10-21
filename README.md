@@ -4,24 +4,23 @@
 
 ---
 
-## 📂 Project Structure (3 Core Modules)
+## 📂 Project Structure (3 Independent Core Modules)
 
 ```text
 OmniAgent/
 ├── CLAUDE.md                # Native instruction file for Claude (Anthropic)
-├── installation/            # Autonomous installers, requirements, and Makefiles
-│   ├── install.py
-│   ├── install.ps1
-│   ├── requirements.txt
-│   ├── Makefile
-│   └── .env.example
-├── pre-downloaded/          # Pre-downloaded ecosystem assets
+├── installation/            # [Independent Module] Autonomous installers downloading tools from official sources
+│   ├── install.py           # Python prerequisite & environment setup wizard
+│   ├── install.ps1          # PowerShell setup wizard
+│   ├── requirements.txt     # Official PyPI dependency manifest
+│   ├── Makefile             # Shortcut commands
+│   └── .env.example         # Environment variables template
+├── pre-downloaded/          # [Independent Module] Standalone pre-downloaded ecosystem assets
 │   ├── agents/              # Macro agents (agency-agents) & micro-subagents (claude-subagents)
 │   ├── skills/              # Pre-downloaded skills (Strix, Graphify, Karpathy, UI/UX, Vercel, etc.)
 │   └── tools/               # Automation scripts (browser_agent.py, office.py)
-└── orchestration/           # Multi-agent orchestration rules and model instructions
-    ├── AGENT_INSTRUCTIONS.md # Multi-model orchestration guidelines
-    ├── instructions/        # Model-specific subfolders (claude/, copilot/, gemini/, openai/)
+└── orchestration/           # [Independent Module] Multi-agent orchestration rules and model instructions
+    ├── instructions/        # Model-specific instructions (claude/, copilot/, gemini/, openai/, others/)
     └── docs/                # Ecosystem guides
 ```
 
