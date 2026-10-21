@@ -21,7 +21,7 @@ OmniAgent/
 │   └── tools/               # Automation scripts (browser_agent.py, office.py)
 └── orchestration/           # Multi-agent orchestration rules and model instructions
     ├── AGENT_INSTRUCTIONS.md # Multi-model orchestration guidelines
-    ├── agents/              # Model-specific instructions (copilot-instructions.md, GEMINI.md, OPENAI.md)
+    ├── instructions/        # Model-specific subfolders (claude/, copilot/, gemini/, openai/)
     └── docs/                # Ecosystem guides
 ```
 
