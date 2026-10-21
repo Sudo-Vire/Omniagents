@@ -1,9 +1,0 @@
-id: 0e49ce0f-0c5a-4952-b51c-4d6a9eaf6559
-cwd: c:\Users\victo\WebProjects\Hacker-Portfolio
-client_name: vscode-agent-host
-name: "tengo estos sprites, corrige los sprites para que los de giro coincidan con los de head body y tail. ten en cuenta que es una matriz 32x32 que rota con una funcion asi q solo tienes q diseñar una direccion /gsd /ui-ux-pro-max /web-design-guidelines head: [\r\n        \".............#....#.............\",\r\n        \"..............#..#..............\",\r\n        \"...............##...............\",\r\n        \"...............##...............\",\r\n        \".............######.............\",\r\n        \"..........."
-user_named: false
-summary_count: 0
-fork_count: 0
-created_at: 2026-10-17T22:27:39.705Z
-updated_at: 2026-10-17T22:27:39.848Z
