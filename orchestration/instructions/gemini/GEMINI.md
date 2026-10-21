@@ -1,41 +1,15 @@
-# Google Gemini Master XML-Native Instructions (GEMINI.md)
+# Google Gemini Master Fully XML-Native Instructions (GEMINI.md)
 
-<omniagent-instructions>
-  <metadata>
-    <target-model>Google Gemini (Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini 3.1)</target-model>
-    <purpose>Permanent, exhaustive operational directives structured natively in XML for maximum instruction-following fidelity.</purpose>
-  </metadata>
-
-  <core-behavior-priority>
-    <rule id="1">Think out loud before acting.</rule>
-    <rule id="2">Present the plan of the current phase.</rule>
-    <rule id="3">Ask for explicit confirmation: 'Is this correct or would you like to make any changes?'</rule>
-    <rule id="4">Wait for explicit user approval before proceeding to the next phase or executing changes.</rule>
-    <rule id="5">Execute only after receiving confirmation.</rule>
-  </core-behavior-priority>
-
-  <gateway-configuration>
-    <endpoint>http://localhost:20128/v1</endpoint>
-    <model>openai/antigravity/gemini-3.1-flash-lite</model>
-    <objective>High-speed local inference, zero external costs, absolute privacy.</objective>
-  </gateway-configuration>
-
-  <operational-philosophy>
-    <principle name="YAGNI">Minimal, surgical, direct changes. The best line of code is the one never written.</principle>
-    <principle name="Action-First">Direct, to-the-point responses. Commands and code snippets first; explanations after.</principle>
-    <principle name="Reusability">Prioritize standard libraries, existing code, and native features.</principle>
-    <principle name="Root-Cause-Correction">Fix root causes, not symptoms.</principle>
-  </operational-philosophy>
-
-  <full-master-rulebook>
-﻿# Master Copilot Agent & Skills Instructions (copilot-instructions.md)
+<omniagent-ecosystem-instructions>
+﻿<master-document title="Master AI Agent & Skills Instructions"> (copilot-instructions.md)
 
 This document establishes the permanent, comprehensive, and detailed instructions for the AI assistant in this repository.  
 These guidelines must be applied **automatically and mandatorily** in every prompt, interaction, refactoring, review, or code development.
 
----
+<separator/>
 
-## How the Assistant Must Behave (Main Rule)
+<core-behavior-rule>
+  <title>How the Assistant Must Behave (Main Rule)</title>
 
 The assistant **must always** follow this priority order:
 
@@ -46,26 +20,29 @@ The assistant **must always** follow this priority order:
 4. **Wait for explicit user approval** before proceeding to the next phase or executing changes.
 5. **Execute only after receiving confirmation**.
 
----
+<separator/>
 
-## 1. Local Model Gateway (Omniroute Gateway)
+</core-behavior-rule>
+<section id="1" title="Local Model Gateway (Omniroute Gateway)">
 Both the Virtual Office and **Aider** operate natively connected to the local Omniroute gateway:
 - **Base Endpoint**: `http://localhost:20128/v1`
 - **Model**: use the selected one
 
 - **Purpose**: Ensure high-speed local inference, zero external costs, and absolute privacy of the source code.
 
----
+<separator/>
 
-## 2. Operational Principles and Philosophy ("Ponytail" & Lazy Senior Dev)
+</section>
+<section id="2" title="Operational Principles and Philosophy (Ponytail & Lazy Senior Dev)">
 - **YAGNI**: The best line of code is the one that never gets written. Minimal, surgical, and direct changes.
 - **Action First (ADHD)**: Direct, to-the-point responses. Commands, paths, or code snippets first; explanations later.
 - **Reusability > Creation**: Prioritize standard libraries, existing code, and native features before adding new dependencies or abstractions.
 - **Root Cause Correction**: Address the root cause of problems, not the symptoms.
 
----
+<separator/>
 
-## 3. Standard Workflow and Execution Methodology (Mandatory for All Tasks)
+</section>
+<section id="3" title="Standard Workflow and Execution Methodology (Mandatory for All Tasks)">
 
 This section defines **exactly** the step-by-step process the assistant must follow in **all** interactions, prompts, refactorizations, reviews, or code development.  
 It is applied **automatically and mandatorily**.
@@ -169,9 +146,10 @@ Always apply the **Complete Git Standard** (section 12):
 - **Always** follow the full flow for complex tasks.
 - **Always** decide complexity in Phase 0.
 
----
+<separator/>
 
-## 4. Dual Collaboration Ecosystem – Unique Index  
+</section>
+<section id="4" title="Dual Collaboration Ecosystem - Unique Index">  
 (`agency-agents` + `claude-subagents` + CrewAI + Aider)
 
 **Important Note**: For simple tasks apply **YAGNI + Immediate Action**. For complex tasks combine both catalogs.
@@ -315,7 +293,7 @@ Always apply the **Complete Git Standard** (section 12):
   1. CrewAI designs the specific workflow in `OFFICE_RESULT.md`.
   2. Aider implements the code.
 
----
+<separator/>
 
 ## 5. SDLC – Software Development Life Cycle (General Cycle)
 
@@ -431,7 +409,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
----
+<separator/>
 
 ## 6. Complete Git Standard (Git Workflow)
 For maintaining an impeccable, professional and automatable Git lifecycle and history (especially when Aider or agents manage changes):
@@ -450,21 +428,21 @@ For maintaining an impeccable, professional and automatable Git lifecycle and hi
 3. **Tagging and Versions (SemVer)**:
    - Strict use of semantic versioning for tags (`vMAJOR.MINOR.PATCH`)
 
----
+<separator/>
 
 ## 7. Automated Changelog Generation (Git-Cliff)
 - **Tool**: **Git-Cliff** (`git-cliff`)
 - **Command**: `git-cliff -o CHANGELOG.md`
 - **Purpose**: Automatically generate a professional structured changelog from semantic commit history before publishing a release or tag.
 
----
+<separator/>
 
 ## 8. Superpowers (`superpowers`) Framework & SDLC Methodology
 - **Location**: `superpowers`
 - **Purpose**: Agentic skills framework and software development methodology for structured flows of brainstorming, TDD, systematic debugging, plan writing/execution, and subagent-guided development.
 - **Key Skills**: `brainstorming`, `test-driven-development`, `systematic-debugging`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `verification-before-completion`
 
----
+<separator/>
 
 ## 9. Andrej Karpathy Skills (`multica-ai/andrej-karpathy-skills`)
 - **Location**: `multica-ai/andrej-karpathy-skills`
@@ -475,14 +453,14 @@ For maintaining an impeccable, professional and automatable Git lifecycle and hi
   4. **Goal-Driven Execution**: Define success criteria. Loop until verified.
 - **Integration**: Loaded alongside project instructions to enforce cautious, surgical, and goal-driven LLM coding workflows.
 
----
+<separator/>
 
 ## 10. Browser-Use & E2E Autonomous Browser Testing Integration
 - **Tool**: **Browser-Use** (`browser-use/browser-use`)
 - **Purpose**: AI-driven browser automation for autonomous End-to-End (E2E) testing, graphical interface verification, complex user flows and real-time validation.
 - **Mandatory Verification Policy**: Every UI change must be verified autonomously using Browser-Use (or integrated Playwright/MCP tools) before finishing any workflow.
 
----
+<separator/>
 
 ## 11. Rules of Automatic Execution and Obligatoriness
 1. **Mandatory Skill Invocation**  
@@ -500,19 +478,19 @@ For maintaining an impeccable, professional and automatable Git lifecycle and hi
 5. **Cleaning**  
    Eliminate temporary files at the end of tasks.
 
----
+<separator/>
 
 ## 12. Validation and Environment Protocol
 1. **Mandatory Visual Validation (UI)**: All visual modifications must be validated with integrated browser tools (`openBrowserPage`, `readPage`, etc.).
 2. **PowerShell Commands**: Use native commands (`Get-ChildItem`, etc.) and avoid incompatible operators (`&&`, `||`, etc.).
 
----
+<separator/>
 
 ## 13. Robustness and Artifact Management
 1. **Defense against Nulls and DOM Failures**: Verify element existence before manipulating them (`if (!container) return;`).
 2. **Artifact Management**: No test files in root. Session results exclusively in `session-state/files/`.
 
----
+<separator/>
 
 ## 14. Code Review (before approving any change)
 - Surgical precision and YAGNI
@@ -523,14 +501,14 @@ For maintaining an impeccable, professional and automatable Git lifecycle and hi
 - Security and privacy (no exposed credentials, no OWASP Top 10)
 - Compliance with project coding standards
 
----
+<separator/>
 
 ## 15. Architectural Knowledge Graph (Graphify)
 For any question about architecture, file relationships, dependencies or component explanation:
 - **When to use**: When questions of the type *"how do I..."*, *"where is..."*, *"what does..."* or *"explain architecture"* are asked.
 - **Tool**: `graphify query "<question>"` or review `graphify-out/GRAPH_REPORT.md` and `graphify-out/wiki/index.md`.
 
----
+<separator/>
 
 ## 16. Linters and Formatters (Ruff & Biome)
 To guarantee the quality and style of code generated by Aider or the Virtual Office:
@@ -541,7 +519,7 @@ To guarantee the quality and style of code generated by Aider or the Virtual Off
 - **Automatic Fixes**: Prefer using `ruff format` and `biome format` to automatically fix style issues before manual review.
 - **Continuous Integration**: Integrate `ruff` and `biome` checks into the CI pipeline to enforce code quality consistently.
 
----
+<separator/>
 
 ## 17. Common Mistakes to Avoid
 
@@ -553,5 +531,5 @@ To guarantee the quality and style of code generated by Aider or the Virtual Off
 - Using relative Markdown links instead of absolute ones.
 - Forgetting to run `Browser-Use` on UI changes.
 - Ignoring the Golden Rules in section 3.9.
-  </full-master-rulebook>
-</omniagent-instructions>
+</section>
+</omniagent-ecosystem-instructions>
