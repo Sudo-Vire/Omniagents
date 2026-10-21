@@ -1,0 +1,52 @@
+package poker.util;
+
+import poker.Apuesta;
+import poker.model.Jugador;
+import poker.view.ConsolaView;
+
+import java.util.List;
+
+/**
+ * Legacy facade kept for source compatibility.  New code must use
+ * {@link ConsolaView}; betting rules are implemented by ApuestaService.
+ */
+@Deprecated
+public final class InterfazUtil {
+    private static final ConsolaView VIEW = new ConsolaView();
+
+    private InterfazUtil() {
+    }
+
+    public static int leerNumero(String mensaje, int min, int max) {
+        return VIEW.leerNumero(mensaje, min, max);
+    }
+
+    public static String leerLinea() {
+        return VIEW.leerLinea();
+    }
+
+    public static void mostrarMensaje(String mensaje) {
+        VIEW.mostrarMensaje(mensaje);
+    }
+
+    public static void limpiarPantalla() {
+        VIEW.limpiarPantalla();
+    }
+
+    public static void cerrarScanner() {
+        VIEW.close();
+    }
+
+    /**
+     * Betting actions moved to ApuestaService.  This method remains only to
+     * make old clients fail explicitly rather than silently applying rules in
+     * the view layer.
+     */
+    public static boolean aspr(Jugador jugador, int cantidadPorIgualar, int[] apuestas,
+                               int indiceJugador, int[] apuestaActual,
+                               List<Jugador> jugadores, String fase, int bigBlindAmount,
+                               Apuesta apuesta) {
+        throw new UnsupportedOperationException(
+                "Las acciones de apuesta se gestionan mediante ApuestaService");
+    }
+}

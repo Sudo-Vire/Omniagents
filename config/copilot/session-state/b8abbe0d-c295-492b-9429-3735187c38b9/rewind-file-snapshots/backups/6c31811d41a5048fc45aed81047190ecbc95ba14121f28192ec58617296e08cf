@@ -1,0 +1,152 @@
+package poker;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
+
+import poker.model.Baraja;
+import poker.model.Carta;
+import poker.service.BarajaService;
+import poker.controller.BarajaController;
+import poker.dto.BarajaDTO;
+import poker.dto.CartaDTO;
+
+class CartasTest {
+
+    private BarajaService barajaService;
+    private BarajaController barajaController;
+    private Baraja baraja;
+
+    @BeforeEach
+    void setUp() {
+        barajaService = new BarajaService();
+        barajaController = new BarajaController();
+        baraja = barajaService.crearBarajaCompleta();
+    }
+
+    @Test
+    void BarajaTiene52CartasDistintasTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        Set<String> cartasUnicas = new HashSet<>();
+
+        for (int i = 0; i < 52; i++) {
+            Carta carta = baraja.obtenerCarta(i);
+            assertNotNull(carta, "No debería haber una carta nula");
+            cartasUnicas.add(carta.toString());
+        }
+        assertEquals(52, cartasUnicas.size(), "La baraja debe tener 52 cartas únicas");
+    }
+
+    @Test
+    void RepartirMasDe52CartasBarajaTest() {
+        baraja = barajaService.crearBarajaCompleta();
+
+        // Repartir todas las cartas
+        for (int i = 0; i < 52; i++) {
+            barajaService.repartirCarta(baraja);
+        }
+
+        // La siguiente carta debería repartirse sin problemas (se baraja automáticamente)
+        assertDoesNotThrow(() -> barajaService.repartirCarta(baraja),
+                "Repartir más de 52 cartas debería barajar y no lanzar excepción");
+    }
+
+    @Test
+    void RepartirMultiplesCartasTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        List<Carta> cartas = barajaService.repartirCartas(baraja, 5);
+
+        assertEquals(5, cartas.size(), "Debería repartir exactamente 5 cartas");
+        for (Carta carta : cartas) {
+            assertNotNull(carta, "Ninguna carta debería ser nula");
+        }
+    }
+
+    @Test
+    void BarajarReestablecerIndiceTest() {
+        baraja = barajaService.crearBarajaCompleta();
+
+        // Repartir algunas cartas
+        barajaService.repartirCartas(baraja, 10);
+        assertTrue(baraja.getIndice() > 0, "El índice debería haber avanzado");
+
+        // Barajar
+        barajaService.barajar(baraja);
+
+        assertEquals(0, baraja.getIndice(), "El índice debería reiniciarse después de barajar");
+    }
+
+    @Test
+    void ControllerCrearBarajaTest() {
+        BarajaDTO barajaDTO = barajaController.crearBaraja();
+
+        assertNotNull(barajaDTO, "El DTO de baraja no debería ser nulo");
+        assertEquals(52, barajaDTO.getTotalCartas(), "La baraja debe tener 52 cartas");
+        assertEquals(0, barajaDTO.getIndiceActual(), "El índice inicial debe ser 0");
+        assertFalse(barajaDTO.isVacia(), "La baraja no debería estar vacía");
+    }
+
+    @Test
+    void ControllerRepartirCartaTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        CartaDTO cartaDTO = barajaController.repartirCarta(baraja);
+
+        assertNotNull(cartaDTO, "El DTO de carta no debería ser nulo");
+        assertNotNull(cartaDTO.getPalo(), "La carta debe tener un palo");
+        assertNotNull(cartaDTO.getValor(), "La carta debe tener un valor");
+    }
+
+    @Test
+    void ControllerRepartirMultiplesTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        List<CartaDTO> cartasDTO = barajaController.repartirMultiples(baraja, 5);
+
+        assertEquals(5, cartasDTO.size(), "Debería repartir exactamente 5 cartas");
+        for (CartaDTO cartaDTO : cartasDTO) {
+            assertNotNull(cartaDTO, "Ninguna carta debería ser nula");
+        }
+    }
+
+    @Test
+    void ControllerBarajarTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        barajaService.repartirCartas(baraja, 10);
+        assertTrue(baraja.getIndice() > 0, "El índice debería haber avanzado");
+
+        barajaController.barajar(baraja);
+
+        assertEquals(0, baraja.getIndice(), "El índice debería reiniciarse después de barajar");
+    }
+
+    @Test
+    void ControllerObtenerEstadoTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        BarajaDTO barajaDTO = barajaController.obtenerEstado(baraja);
+
+        assertNotNull(barajaDTO, "El estado de la baraja no debería ser nulo");
+        assertEquals(52, barajaDTO.getTotalCartas(), "Total de cartas debe ser 52");
+        assertEquals(0, barajaDTO.getIndiceActual(), "Índice debe ser 0");
+    }
+
+    @Test
+    void CartaToStringTest() {
+        Carta carta = new Carta("Picas", "A");
+        assertEquals("A de Picas", carta.toString(), "El toString de Carta debería ser correcto");
+    }
+
+    @Test
+    void ValidarBarajaNulaTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            barajaController.repartirCarta(null);
+        }, "Debería lanzar excepción si la baraja es nula");
+    }
+
+    @Test
+    void ValidarCantidadNegativaTest() {
+        baraja = barajaService.crearBarajaCompleta();
+        assertThrows(IllegalArgumentException.class, () -> {
+            barajaController.repartirMultiples(baraja, -5);
+        }, "Debería lanzar excepción si la cantidad es negativa");
+    }
+}

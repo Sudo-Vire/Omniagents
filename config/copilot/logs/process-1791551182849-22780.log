@@ -1,0 +1,2 @@
+2026-10-09T13:06:22.855Z [INFO] Native runtime logging initialized
+2026-10-10T17:05:44.566Z [WARNING] [rust:copilot_runtime::protocol::jsonrpc::standalone] Standalone JSON-RPC one-way host call failed {"error":"Standalone server does not support host call 'lifecycle_server_shutdown_finalize'"}

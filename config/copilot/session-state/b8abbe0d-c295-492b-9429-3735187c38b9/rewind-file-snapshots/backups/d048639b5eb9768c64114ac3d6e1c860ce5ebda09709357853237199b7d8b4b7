@@ -1,0 +1,32 @@
+package poker.service;
+
+import poker.model.Jugador;
+import poker.util.InterfazUtil;
+
+public class JugadorService {
+
+    // Mostrar la mano del jugador en consola
+    public void mostrarMano(Jugador jugador) {
+        if (jugador == null) {
+            throw new IllegalArgumentException("Jugador no puede ser nulo");
+        }
+
+        StringBuilder manoEnLinea = new StringBuilder(jugador.getNombre() + " tiene: ");
+        for (var carta : jugador.getMano()) {
+            manoEnLinea.append(carta.toString()).append(" ");
+        }
+        InterfazUtil.mostrarMensaje(manoEnLinea.toString());
+    }
+
+    // Mostrar estado general del jugador
+    public void mostrarEstadoJugador(Jugador jugador) {
+        if (jugador == null) {
+            throw new IllegalArgumentException("Jugador no puede ser nulo");
+        }
+
+        String estado = jugador.getNombre() + " - Saldo: " + jugador.getSaldo() +
+                ", En juego: " + jugador.isEnJuego() +
+                ", All-in: " + jugador.isVaAllIn();
+        InterfazUtil.mostrarMensaje(estado);
+    }
+}

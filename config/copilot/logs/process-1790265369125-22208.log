@@ -1,0 +1,14 @@
+2026-09-24T15:56:09.145Z [INFO] Shell completions: no supported shell detected, skipping
+2026-09-24T15:56:09.145Z [INFO] Starting CLI in server mode (stdio)
+2026-09-24T15:56:09.163Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-09-24T15:56:09.168Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-09-24T15:56:09.168Z [INFO] Server started, waiting for requests
+2026-09-24T15:56:09.710Z [INFO] [rust:copilot_runtime::shared_api::permissions] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-09-24T15:56:09.887Z [INFO] Workspace initialized: f47c9a4c-b2a4-42ee-a84a-15d845c15b7d (checkpoints: 0)
+2026-09-24T15:56:09.907Z [INFO] Created session: f47c9a4c-b2a4-42ee-a84a-15d845c15b7d
+2026-09-24T15:56:09.967Z [WARNING] [rust:mcp::client] server/discover returned an unusable JSON response; retrying with legacy initialize
+2026-09-24T15:56:09.970Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(ServerPeerInfo { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: None, list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Some(Implementation { name: \"Copilot MCP Gateway\", title: None, version: \"0.1.0\", description: None, icons: None, website_url: None }), instructions: None, meta: None })"}
+2026-09-24T15:56:11.576Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T15:56:11.576Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T16:25:53.634Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T16:25:53.634Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}

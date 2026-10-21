@@ -1,0 +1,28 @@
+package poker.dto;
+
+import java.util.List;
+
+public class BarajaDTO {
+    private int totalCartas;
+    private int indiceActual;
+    private boolean vacia;
+
+    public BarajaDTO(int totalCartas, int indiceActual, boolean vacia) {
+        this.totalCartas = totalCartas;
+        this.indiceActual = indiceActual;
+        this.vacia = vacia;
+    }
+
+    public int getTotalCartas() { return totalCartas; }
+    public int getIndiceActual() { return indiceActual; }
+    public boolean isVacia() { return vacia; }
+
+    @Override
+    public String toString() {
+        return "BarajaDTO{" +
+                "totalCartas=" + totalCartas +
+                ", indiceActual=" + indiceActual +
+                ", vacia=" + vacia +
+                '}';
+    }
+}

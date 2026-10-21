@@ -1,0 +1,9 @@
+id: 9031ce16-a464-4906-80b3-e94a427d8488
+cwd: c:\Users\victo\WebProjects\Hacker-Portfolio
+client_name: vscode-agent-host
+name: "**Prompt:**\r\n\r\nActúa como arquitecto de software y realiza una refactorización integral de dependencias, importaciones y llamadas en toda la base de código para que la herramienta **Graphify** pueda mapear, agrupar y anidar correctamente todos los nodos en el grafo de relaciones.\r\n\r\n**Diagnóstico del problema:**\r\n\r\nActualmente, Graphify genera nodos huérfanos y subsistemas desconectados debido a importaciones dinámicas, llamadas desacopladas, inyecciones implícitas o falta de referencias directa..."
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-16T16:59:18.244Z
+updated_at: 2026-10-16T16:59:18.337Z

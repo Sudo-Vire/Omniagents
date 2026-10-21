@@ -1,0 +1,72 @@
+package poker.controller;
+
+import poker.dto.BarajaDTO;
+import poker.dto.CartaDTO;
+import poker.model.Baraja;
+import poker.model.Carta;
+import poker.service.BarajaService;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class BarajaController {
+
+    private BarajaService barajaService;
+
+    public BarajaController(BarajaService barajaService) {
+        if (barajaService == null) {
+            throw new IllegalArgumentException("El servicio de baraja no puede ser nulo");
+        }
+        this.barajaService = barajaService;
+    }
+
+    // Crear una nueva baraja completa y barajada
+    public BarajaDTO crearBaraja() {
+        Baraja baraja = barajaService.crearBarajaCompleta();
+        return convertirADTO(baraja);
+    }
+
+    // Repartir una sola carta
+    public CartaDTO repartirCarta(Baraja baraja) {
+        if (baraja == null) {
+            throw new IllegalArgumentException("Baraja no inicializada");
+        }
+        Carta carta = barajaService.repartirCarta(baraja);
+        return new CartaDTO(carta.getPalo(), carta.getValor());
+    }
+
+    // Repartir múltiples cartas
+    public List<CartaDTO> repartirMultiples(Baraja baraja, int cantidad) {
+        if (baraja == null || cantidad <= 0) {
+            throw new IllegalArgumentException("Datos inválidos");
+        }
+        return barajaService.repartirCartas(baraja, cantidad)
+                .stream()
+                .map(carta -> new CartaDTO(carta.getPalo(), carta.getValor()))
+                .collect(Collectors.toList());
+    }
+
+    // Barajar la baraja
+    public void barajar(Baraja baraja) {
+        if (baraja == null) {
+            throw new IllegalArgumentException("Baraja no inicializada");
+        }
+        barajaService.barajar(baraja);
+    }
+
+    // Obtener estado de la baraja
+    public BarajaDTO obtenerEstado(Baraja baraja) {
+        if (baraja == null) {
+            throw new IllegalArgumentException("Baraja no inicializada");
+        }
+        return convertirADTO(baraja);
+    }
+
+    // Método auxiliar privado para convertir Baraja a DTO
+    private BarajaDTO convertirADTO(Baraja baraja) {
+        return new BarajaDTO(
+                baraja.getTamanio(),
+                baraja.getIndice(),
+                baraja.estaVacia()
+        );
+    }
+}

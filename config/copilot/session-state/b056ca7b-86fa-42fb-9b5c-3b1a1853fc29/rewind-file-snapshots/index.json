@@ -1,0 +1,249 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "182fdfeb-1b62-4270-be43-9c748a4f56b6",
+      "eventId": "21ca7f2d-85a9-4892-bb29-1db95c501966",
+      "userMessage": "los comentaariios en español",
+      "timestamp": "2026-09-23T23:41:23.157Z",
+      "files": {
+        "623131c964ffc8c4e41b4874c81e4b04": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\Juego.java",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "beeb19be70c46f9f8dd329b5ff1005f7dddc3e4e49b18c935dd8d83bbb29170a",
+            "backupFile": "beeb19be70c46f9f8dd329b5ff1005f7dddc3e4e49b18c935dd8d83bbb29170a",
+            "mode": 33206,
+            "size": 983,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\Juego.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c004a007500650067006f002e006a006100760061"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "42695e90bb54ed2c6c8056c77ea0414b2df133305ba6347123fda1f2032e3a32",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\Juego.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c004a007500650067006f002e006a006100760061"
+            }
+          },
+          "linesAdded": 3,
+          "linesRemoved": 2
+        },
+        "455d5818f0f3cd73618cd63d06d6ceb6": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\controller\\JuegoController.java",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "f3a143e89ab49ed3b1e1a205db02763f38beddcc2e0ad3b4fcac11fa85449210",
+            "backupFile": "f3a143e89ab49ed3b1e1a205db02763f38beddcc2e0ad3b4fcac11fa85449210",
+            "mode": 33206,
+            "size": 10676,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\controller\\JuegoController.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0063006f006e00740072006f006c006c00650072005c004a007500650067006f0043006f006e00740072006f006c006c00650072002e006a006100760061"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "874de3d7e3634690f4793722703dbfa54cd8bec42552927c7d68cd763ab398d0",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\controller\\JuegoController.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0063006f006e00740072006f006c006c00650072005c004a007500650067006f0043006f006e00740072006f006c006c00650072002e006a006100760061"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        },
+        "6a471cc4d435e47368a1654cc1f7b54d": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\view\\ConsolaView.java",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "a05321b6bd46c4ddf337018e2446ff07dfd52e943941a2573bf5b824ae6bc8be",
+            "backupFile": "a05321b6bd46c4ddf337018e2446ff07dfd52e943941a2573bf5b824ae6bc8be",
+            "mode": 33206,
+            "size": 2844,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\view\\ConsolaView.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0076006900650077005c0043006f006e0073006f006c00610056006900650077002e006a006100760061"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "4618146fa00d205af1b270d938460e80f93f540c8f7e4f478a3eb7462bd4705a",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\view\\ConsolaView.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0076006900650077005c0043006f006e0073006f006c00610056006900650077002e006a006100760061"
+            }
+          },
+          "linesAdded": 4,
+          "linesRemoved": 3
+        },
+        "56cad69ec038ba7b177c54d9e5d27be0": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\service\\ApuestaService.java",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "16fef01f6f702f004599492717ce80298da76ad68a57a7576a3a80d37290dc16",
+            "backupFile": "16fef01f6f702f004599492717ce80298da76ad68a57a7576a3a80d37290dc16",
+            "mode": 33206,
+            "size": 13034,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\service\\ApuestaService.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0073006500720076006900630065005c00410070007500650073007400610053006500720076006900630065002e006a006100760061"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "87a9e60abab2b8759fc10892ffd98284997086c12fa7d8234471d5981a521ed9",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\main\\java\\poker\\service\\ApuestaService.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c006d00610069006e005c006a006100760061005c0070006f006b00650072005c0073006500720076006900630065005c00410070007500650073007400610053006500720076006900630065002e006a006100760061"
+            }
+          },
+          "linesAdded": 7,
+          "linesRemoved": 6
+        }
+      },
+      "backupFiles": [
+        "beeb19be70c46f9f8dd329b5ff1005f7dddc3e4e49b18c935dd8d83bbb29170a",
+        "f3a143e89ab49ed3b1e1a205db02763f38beddcc2e0ad3b4fcac11fa85449210",
+        "a05321b6bd46c4ddf337018e2446ff07dfd52e943941a2573bf5b824ae6bc8be",
+        "16fef01f6f702f004599492717ce80298da76ad68a57a7576a3a80d37290dc16"
+      ],
+      "fileCount": 4,
+      "linesAdded": 15,
+      "linesRemoved": 12
+    },
+    {
+      "snapshotId": "4cdfe519-9df7-44f7-a622-0ab464b199eb",
+      "eventId": "1786806e-16bd-4d11-ba2e-02e5bca3943b",
+      "userMessage": "mmensaje de commit pon v4.11.2",
+      "timestamp": "2026-09-23T23:55:20.199Z",
+      "files": {
+        "e96a75e03fd3e273028bd8465d8ab16f": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\pom.xml",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "87acddc420570296c4e1b47b049772982f308d9e35e66b5a213a9357e83e4d04",
+            "backupFile": "87acddc420570296c4e1b47b049772982f308d9e35e66b5a213a9357e83e4d04",
+            "mode": 33206,
+            "size": 2604,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\pom.xml",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c0070006f006d002e0078006d006c"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "91ec6ba1f6b5c6d637b2dd1a2ff8fd5923e28a379c6862acb3f21df7900efd00",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\pom.xml",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c0070006f006d002e0078006d006c"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        },
+        "9db40c0eb3c3d9ff73c8a3fa270f3d23": {
+          "path": "c:\\Users\\victo\\JavaProjects\\Poker\\README.md",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "b2859ac8dad2b4defe604cd6949ca8f66a9552aebfd5d3e5c4a2b892bc7500a7",
+            "backupFile": "b2859ac8dad2b4defe604cd6949ca8f66a9552aebfd5d3e5c4a2b892bc7500a7",
+            "mode": 33206,
+            "size": 4040,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\README.md",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c0052004500410044004d0045002e006d0064"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "b0c1115993caa207a17097a5fda1b7d76e0a32bc587375a005dae2abd87b1306",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\README.md",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c0052004500410044004d0045002e006d0064"
+            }
+          },
+          "linesAdded": 2,
+          "linesRemoved": 2
+        },
+        "a9967654aa242143c59481fc096269cc": {
+          "path": "C:\\Users\\victo\\JavaProjects\\Poker\\src\\test\\java\\poker\\ConsolaViewTest.java",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "845621ee5f5f67ad117dbf51555f019ec18a87dd2ea9eacdc518ef49681eada5",
+            "backupFile": "845621ee5f5f67ad117dbf51555f019ec18a87dd2ea9eacdc518ef49681eada5",
+            "mode": 33206,
+            "size": 1328,
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\test\\java\\poker\\ConsolaViewTest.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c0074006500730074005c006a006100760061005c0070006f006b00650072005c0043006f006e0073006f006c006100560069006500770054006500730074002e006a006100760061"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "f475462f3e957624ae408c519b51c8e9fc1887efe893634b86a87c22ce1271d4",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\JavaProjects\\Poker\\src\\test\\java\\poker\\ConsolaViewTest.java",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c004a00610076006100500072006f006a0065006300740073005c0050006f006b00650072005c007300720063005c0074006500730074005c006a006100760061005c0070006f006b00650072005c0043006f006e0073006f006c006100560069006500770054006500730074002e006a006100760061"
+            }
+          },
+          "linesAdded": 2,
+          "linesRemoved": 2
+        }
+      },
+      "backupFiles": [
+        "87acddc420570296c4e1b47b049772982f308d9e35e66b5a213a9357e83e4d04",
+        "b2859ac8dad2b4defe604cd6949ca8f66a9552aebfd5d3e5c4a2b892bc7500a7",
+        "845621ee5f5f67ad117dbf51555f019ec18a87dd2ea9eacdc518ef49681eada5"
+      ],
+      "fileCount": 3,
+      "linesAdded": 5,
+      "linesRemoved": 5
+    },
+    {
+      "snapshotId": "9d79a46f-e442-45fc-b250-afc0d58ef189",
+      "eventId": "8db712b9-2f3e-47ef-abca-9fb6412b039f",
+      "userMessage": "hazlo tu para que yo solo tenga que meter el token",
+      "timestamp": "2026-09-24T00:20:36.383Z",
+      "files": {
+        "26617ed0af970811bab07fc2975c91a2": {
+          "path": "C:\\Users\\victo\\.m2\\settings.xml",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "3cd20ac99da00e5948e6538775e801513f87088e42f02f8d6f8f97c08ebce9aa",
+            "resolvedPath": "\\\\?\\C:\\Users\\victo\\.m2\\settings.xml",
+            "encodedPath": {
+              "encoding": "windows-wide",
+              "data": "005c005c003f005c0043003a005c00550073006500720073005c0076006900630074006f005c002e006d0032005c00730065007400740069006e00670073002e0078006d006c"
+            }
+          },
+          "linesAdded": 11,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [],
+      "fileCount": 1,
+      "linesAdded": 11,
+      "linesRemoved": 0
+    }
+  ]
+}

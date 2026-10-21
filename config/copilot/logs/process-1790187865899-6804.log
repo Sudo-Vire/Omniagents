@@ -1,0 +1,96 @@
+2026-09-23T18:24:25.911Z [INFO] Shell completions: no supported shell detected, skipping
+2026-09-23T18:24:25.912Z [INFO] Starting CLI in server mode (stdio)
+2026-09-23T18:24:25.916Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-09-23T18:24:25.917Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-09-23T18:24:25.917Z [INFO] Server started, waiting for requests
+2026-09-23T18:24:27.587Z [INFO] [rust:copilot_runtime::shared_api::permissions] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-09-23T18:24:27.620Z [INFO] Workspace initialized: b8abbe0d-c295-492b-9429-3735187c38b9 (checkpoints: 0)
+2026-09-23T18:24:27.629Z [INFO] Created session: b8abbe0d-c295-492b-9429-3735187c38b9
+2026-09-23T18:24:27.675Z [WARNING] [rust:mcp::client] server/discover returned an unusable JSON response; retrying with legacy initialize
+2026-09-23T18:24:27.678Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(ServerPeerInfo { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: None, list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Some(Implementation { name: \"Copilot MCP Gateway\", title: None, version: \"0.1.0\", description: None, icons: None, website_url: None }), instructions: None, meta: None })"}
+2026-09-23T18:24:29.413Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:24:29.413Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:24:35.569Z [INFO] [rust:copilot_runtime::tools::login_shell_env] login_shell_env_outcome {"outcome":"unsupported_platform","shell":"","elapsed_ms":0,"names_added":0,"names_changed":0,"path_entries_before":0,"path_entries_after":0,"path_entries_added":0,"path_front_changed":false,"path_front_before":"","path_front_after":""}
+2026-09-23T18:29:52.987Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:29:52.987Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:37:28.913Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:37:28.913Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:39:09.738Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:39:09.739Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:45:05.672Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:45:05.672Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:50:42.785Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:50:42.786Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T18:54:25.044Z [WARNING] [rust:rewind::store] rewind: failed to stage preimage {"path":"C:\\Program Files\\Git\\bin\\git.exe,C:\\Program Files\\Git\\cmd\\git.exe","error":"El nombre de archivo, el nombre de directorio o la sintaxis de la etiqueta del volumen no son correctos. (os error 123)"}
+2026-09-23T18:54:26.280Z [WARNING] [rust:rewind::store] rewind: failed to record postimage {"path":"C:\\Program Files\\Git\\bin\\git.exe,C:\\Program Files\\Git\\cmd\\git.exe","error":"El nombre de archivo, el nombre de directorio o la sintaxis de la etiqueta del volumen no son correctos. (os error 123)"}
+2026-09-23T18:56:56.938Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T18:56:56.938Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:04:46.736Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:04:46.736Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:15:12.429Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:15:12.429Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:19:46.028Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:19:46.028Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:22:18.903Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:22:18.903Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:23:18.763Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:23:18.764Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:30:50.848Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:30:50.848Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:31:49.091Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:31:49.092Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:33:48.879Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:33:48.879Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T19:35:41.118Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T19:35:41.119Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:02:15.007Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:02:15.007Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:14:02.518Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:14:02.518Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:19:45.539Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:19:45.539Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:21:56.029Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:21:56.029Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:23:04.018Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:23:04.018Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:23:40.347Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:23:40.347Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:27:55.016Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:27:55.016Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:33:14.680Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:33:14.681Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:36:37.992Z [INFO] [rust:copilot_runtime::shared_api::permissions] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-09-23T23:36:38.046Z [INFO] Workspace initialized: b056ca7b-86fa-42fb-9b5c-3b1a1853fc29 (checkpoints: 0)
+2026-09-23T23:36:38.053Z [INFO] Created session: b056ca7b-86fa-42fb-9b5c-3b1a1853fc29
+2026-09-23T23:36:38.083Z [WARNING] [rust:mcp::client] server/discover returned an unusable JSON response; retrying with legacy initialize
+2026-09-23T23:36:38.086Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(ServerPeerInfo { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: None, list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Some(Implementation { name: \"Copilot MCP Gateway\", title: None, version: \"0.1.0\", description: None, icons: None, website_url: None }), instructions: None, meta: None })"}
+2026-09-23T23:36:38.978Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:36:38.978Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:41:23.120Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:41:23.121Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:47:57.317Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:47:57.318Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:49:45.094Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:49:45.095Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-23T23:50:40.821Z [INFO] [rust:copilot_runtime::session::session_notification_delivery] Shell command "Install Git so the branch and pull request can be created" (shell
+2026-09-23T23:55:20.156Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-23T23:55:20.156Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:07:29.794Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:07:29.794Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:11:05.435Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:11:05.435Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:13:29.731Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:13:29.731Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:14:58.677Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:14:58.677Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:20:36.340Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:20:36.341Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:21:35.074Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:21:35.075Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:24:23.435Z [WARNING] [rust:copilot_runtime::session::streaming_chunk_display] streaming chunk display received a chunk with a different streaming id {"streaming_id":"00000-2cbe79f5-2b1e-474e-ab99-08829ff3d890"}
+2026-09-24T00:25:17.947Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:25:17.948Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:26:09.901Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:26:09.902Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}
+2026-09-24T00:32:00.110Z [INFO] [rust:tool_handlers::api::memory] Memory is not enabled: Copilot token is required.
+2026-09-24T00:32:00.110Z [WARNING] [rust:copilot_runtime::session::tool_initialization] Failed to prepare native memory tools {"error":"GenericFailure, memory enablement request failed transiently"}

@@ -1,0 +1,21 @@
+package poker;
+
+import poker.service.ApuestaService;
+import poker.service.JugadorService;
+import poker.view.ConsolaView;
+
+/**
+ * Compatibility name for clients of versions prior to the MVC refactor.
+ * New code should depend on {@link ApuestaService}.
+ */
+@Deprecated
+public class Apuesta extends ApuestaService {
+    public Apuesta(int smallBlind, int bigBlind, int manosParaAumentarCiegas) {
+        this(smallBlind, bigBlind, manosParaAumentarCiegas, new ConsolaView());
+    }
+
+    public Apuesta(int smallBlind, int bigBlind, int manosParaAumentarCiegas,
+                   ConsolaView view) {
+        super(smallBlind, bigBlind, manosParaAumentarCiegas, view, new JugadorService());
+    }
+}
