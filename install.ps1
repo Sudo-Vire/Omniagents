@@ -1,12 +1,50 @@
-# Devian Autonomous & Interactive PowerShell Installer
+# Devian Advanced Prerequisite & Interactive PowerShell Installer
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "         Devian Advanced AI Ecosystem - Setup & Installer       " -ForegroundColor Cyan
+Write-Host "         Devian AI Ecosystem - Prerequisite & Setup Wizard      " -ForegroundColor Cyan
 Write-Host "================================================================" -ForegroundColor Cyan
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 Set-Location $scriptDir
 
-# 1. Create virtual environment
+# 1. Prerequisite Checks
+Write-Host "`n--- Phase 1: Verifying System Prerequisites ---" -ForegroundColor Yellow
+
+# Python check
+$pyVersion = python --version 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[!] Error: Python is not installed or not in PATH. Please install Python >= 3.10." -ForegroundColor Red
+    exit 1
+}
+Write-Host "    [OK] Python detected: $pyVersion" -ForegroundColor Green
+
+# Git check
+try {
+    $gitVersion = git --version 2>&1
+    Write-Host "    [OK] Git detected: $gitVersion" -ForegroundColor Green
+} catch {
+    Write-Host "    [!] Warning: Git is recommended for fetching repository updates." -ForegroundColor Yellow
+}
+
+# Rust / Cargo check
+try {
+    $cargoVersion = cargo --version 2>&1
+    Write-Host "    [OK] Rust/Cargo detected: $cargoVersion" -ForegroundColor Green
+} catch {
+    Write-Host "    [!] Rust/Cargo is not detected on your system." -ForegroundColor Yellow
+    Write-Host "        Some high-performance tools or extensions may require Rust." -ForegroundColor White
+    Write-Host "        To install Rust (rustup):" -ForegroundColor White
+    Write-Host "        - Run via winget: winget install Rustlang.Rustup" -ForegroundColor Cyan
+    Write-Host "        - Or visit: https://rustup.rs/" -ForegroundColor Cyan
+    
+    $cont = Read-Host "`nWould you like to continue without Rust/Cargo? (Y/n)"
+    if ($cont -eq 'n' -or $cont -eq 'N') {
+        Write-Host "Aborting installation." -ForegroundColor Red
+        exit 1
+    }
+}
+
+# 2. Virtual Environment & Dependencies
+Write-Host "`n--- Phase 2: Setting up Python Environment & Dependencies ---" -ForegroundColor Yellow
 if (!(Test-Path ".venv")) {
     Write-Host "[+] Creating isolated virtual environment (.venv)..." -ForegroundColor Green
     python -m venv .venv
@@ -15,28 +53,25 @@ if (!(Test-Path ".venv")) {
 }
 
 $pip = ".\.venv\Scripts\pip"
-$python = ".\.venv\Scripts\python"
-
-# 2. Install requirements
 if (Test-Path "requirements.txt") {
-    Write-Host "[+] Installing Python dependencies for agents, tools, and workflows..." -ForegroundColor Green
+    Write-Host "[+] Installing Python dependencies..." -ForegroundColor Green
     & $pip install --upgrade pip
     & $pip install -r requirements.txt
 }
 
-# 3. Check Omniroute Local Gateway
-Write-Host "[+] Verifying Local AI Gateway (Omniroute)..." -ForegroundColor Green
+# 3. Omniroute Local Gateway Check
+Write-Host "`n--- Phase 3: Checking Local AI Gateway (Omniroute) ---" -ForegroundColor Yellow
 $gatewayActive = $false
 try {
     $response = Invoke-RestMethod -Uri "http://localhost:20128/v1/models" -Headers @{ Authorization = "Bearer not-needed" } -TimeoutSec 2
     $gatewayActive = $true
     Write-Host "[+] Success: Omniroute gateway is running on http://localhost:20128/v1" -ForegroundColor Cyan
 } catch {
-    Write-Host "[!] Omniroute Gateway is NOT currently running on http://localhost:20128/v1." -ForegroundColor Yellow
+    Write-Host "[!] Omniroute Gateway is NOT running on http://localhost:20128/v1." -ForegroundColor Yellow
     Write-Host ""
     Write-Host "--- HOW TO OBTAIN & INSTALL OMNIROUTE ---" -ForegroundColor Cyan
     Write-Host "1. Omniroute provides local LLM routing for Devian agents." -ForegroundColor White
-    Write-Host "2. Start your Omniroute gateway service locally on port 20128." -ForegroundColor White
+    Write-Host "2. Start your Omniroute service locally on port 20128." -ForegroundColor White
     Write-Host "3. Alternatively, configure custom API endpoints below." -ForegroundColor White
     Write-Host ""
     
