@@ -8,6 +8,7 @@
 
 ```text
 OmniAgent/
+├── CLAUDE.md                # Native instruction file for Claude (Anthropic)
 ├── installation/            # Autonomous installers, requirements, and Makefiles
 │   ├── install.py
 │   ├── install.ps1
@@ -20,7 +21,7 @@ OmniAgent/
 │   └── tools/               # Automation scripts (browser_agent.py, office.py)
 └── orchestration/           # Multi-agent orchestration rules and model instructions
     ├── AGENT_INSTRUCTIONS.md # Multi-model orchestration guidelines
-    ├── copilot-instructions.md
+    ├── agents/              # Model-specific instructions (copilot-instructions.md, GEMINI.md, OPENAI.md)
     └── docs/                # Ecosystem guides
 ```
 
