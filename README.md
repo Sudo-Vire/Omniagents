@@ -1,33 +1,34 @@
-# OmniAgent-OS — Universal AI Agent & Multi-Model Orchestration Ecosystem
+# OmniAgent — Universal AI Agent & Multi-Model Orchestration Ecosystem
 
-**OmniAgent-OS** is an open-source, production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
+**OmniAgent** is an open-source, production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
 
 ---
 
-## 📁 Repository Structure
+## 📂 Project Structure (3 Core Modules)
 
 ```text
-OmniAgent-OS/
-├── agents/                  # Specialized AI agents & sub-agents
-│   ├── agency-agents/       # Macro agent catalog (domain-specific agents)
-│   └── claude-subagents/    # Tactical micro-subagents
-├── skills/                  # Reusable agent skills & superpowers (Strix, Graphify, Karpathy, UI/UX, etc.)
-│   ├── strix/
-│   ├── graphify/
-│   ├── andrej-karpathy-skills/
-│   └── superpowers/
-├── tools/                   # Execution scripts & utilities (browser automation, office tools, etc.)
-│   ├── browser_agent.py
-│   └── office.py
-└── docs/                    # Ecosystem guides and architectural documentation
-    └── ECOSYSTEM_GUIDE.md
+OmniAgent/
+├── installation/            # Autonomous installers, requirements, and Makefiles
+│   ├── install.py
+│   ├── install.ps1
+│   ├── requirements.txt
+│   ├── Makefile
+│   └── .env.example
+├── pre-downloaded/          # Pre-downloaded ecosystem assets
+│   ├── agents/              # Macro agents (agency-agents) & micro-subagents (claude-subagents)
+│   ├── skills/              # Pre-downloaded skills (Strix, Graphify, Karpathy, UI/UX, Vercel, etc.)
+│   └── tools/               # Automation scripts (browser_agent.py, office.py)
+└── orchestration/           # Multi-agent orchestration rules and model instructions
+    ├── AGENT_INSTRUCTIONS.md # Multi-model orchestration guidelines
+    ├── copilot-instructions.md
+    └── docs/                # Ecosystem guides
 ```
 
 ---
 
-## 🌐 Multi-Model & Multi-Agent Compatibility
+## 🌐 Multi-Agent & Multi-Model Orchestration
 
-OmniAgent-OS is built to run across leading AI assistants and model providers:
+OmniAgent provides unified orchestration across leading AI models and assistants:
 - **GitHub Copilot** (VS Code / Copilot SDK)
 - **Claude** (Anthropic Claude Code & Desktop)
 - **Gemini** (Google Gemini CLI & API)
@@ -35,17 +36,17 @@ OmniAgent-OS is built to run across leading AI assistants and model providers:
 
 ---
 
-## ⚙️ Prerequisites & Autonomous Installation
+## ⚙️ Autonomous Installation
 
 ### System Requirements
 - **Python**: Version 3.10 or higher.
-- **Git**: For cloning and fetching repository updates.
+- **Git**: For repository updates.
 - **Rust / Cargo**: Recommended for high-performance extensions.
 
 ### Installation Commands
 ```bash
-git clone https://github.com/Sudo-Vire/Devian.git OmniAgent-OS
-cd OmniAgent-OS
+git clone https://github.com/Sudo-Vire/Devian.git OmniAgent
+cd OmniAgent/installation
 
 # Cross-platform Python installer
 python install.py
@@ -56,9 +57,9 @@ python install.py
 
 ---
 
-## 📜 Authorship & Credits
+## 📜 Authorship & Copyright Attribution
 
-Please refer to [AUTHORS.md](AUTHORS.md) and [NOTICE](NOTICE) for explicit attribution to upstream creators and open-source contributors for Strix, Graphify, Agency Agents, Claude Subagents, and Andrej Karpathy Skills.
+Please refer to [AUTHORS.md](AUTHORS.md) and [NOTICE](NOTICE) for explicit copyright attribution to upstream creators for Strix, Graphify, Agency Agents, Claude Subagents, and Andrej Karpathy Skills.
 
 ---
 

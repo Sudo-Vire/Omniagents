@@ -1,9 +1,13 @@
-OmniAgent-OS
-Copyright 2026 Sudo-Vire and Contributors
+OmniAgent
+Copyright (c) 2026 Sudo-Vire and Contributors
 
-This product includes software and prompt architectures developed by the open-source community, including:
-- Agency Agents
-- Strix Security Framework
-- Graphify Knowledge Graph Engine
-- Andrej Karpathy Skills
-- Claude Subagents Ecosystem
+This product includes software, agents, skills, and prompt architectures developed by the open-source community and respective authors:
+
+1. **Agency Agents Catalog** — Agency Agents Open Source Contributors
+2. **Claude Subagents** — Anthropic Claude Ecosystem Community
+3. **Andrej Karpathy Skills** — Andrej Karpathy & Contributors
+4. **Superpowers & Plugins** — Superpowers Open Source Contributors
+5. **Strix Security Framework** — Strix Security Team & Maintainers
+6. **Graphify Knowledge Graph** — Graphify Contributors
+7. **UI/UX Pro Max & Vercel Best Practices** — UI/UX and Vercel Engineering Communities
+8. **GitHub Copilot SDK & Google Gemini / OpenAI Runtimes** — Google DeepMind, GitHub, Google, and OpenAI
