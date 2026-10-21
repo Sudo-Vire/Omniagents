@@ -23,19 +23,48 @@ Devian/
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Prerequisites & System Requirements
 
+- **Python**: Version 3.10 or higher.
+- **Local Model Gateway (Omniroute)**: Running at `http://localhost:20128/v1` (optional if using cloud/other providers).
+- **Git**: For cloning and fetching repository updates.
+
+---
+
+## 🚀 Installation & Autonomous Setup
+
+You can install Devian and download all ecosystem elements, tools, and dependencies fully autonomously using the provided installation scripts:
+
+### Option 1: Python Installer (Cross-Platform)
+```bash
+python install.py
+```
+
+### Option 2: PowerShell Installer (Windows)
+```powershell
+.\install.ps1
+```
+
+### Manual Installation
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/Sudo-Vire/Devian.git
    cd Devian
    ```
-2. **Explore Agents & Skills**:
-   - Check [docs/ECOSYSTEM_GUIDE.md](docs/ECOSYSTEM_GUIDE.md) for architectural details and gateway configurations.
-   - Utilize agents and skills in your LLM workflows or IDE integrations (VS Code / Copilot SDK / Claude / Omniroute).
+2. **Create virtual environment & install dependencies**:
+   ```bash
+   python -m venv .venv
+   # Windows:
+   .\.venv\Scripts\Activate.ps1
+   # macOS/Linux:
+   source .venv/bin/activate
+   
+   pip install -r requirements.txt
+   ```
 
 ---
 
 ## 📄 License & Contributing
 
 Contributions are welcome! Please open issues or pull requests for enhancements, new agents, or additional skills.
+
