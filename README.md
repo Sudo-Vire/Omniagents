@@ -1,27 +1,19 @@
-# Devian — Advanced AI Agentic Ecosystem & Tooling
+# OmniAgent-OS — Universal AI Agent & Multi-Model Orchestration Ecosystem
 
-Devian is an open-source, modular framework and ecosystem for advanced AI agents, micro-subagents, specialized skills, autonomous workflows, and local model gateway tooling.
-
-
----
-
-## ⚙️ Makefile & Quick Commands
-
-If you have `make` installed, you can use convenient shortcuts:
-- `make install` - Run the autonomous installer
-- `make lint`    - Verify syntax and lint code
-- `make clean`   - Clean caches and build artifacts
+**OmniAgent-OS** is an open-source, production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
-Devian/
+OmniAgent-OS/
 ├── agents/                  # Specialized AI agents & sub-agents
 │   ├── agency-agents/       # Macro agent catalog (domain-specific agents)
 │   └── claude-subagents/    # Tactical micro-subagents
-├── skills/                  # Reusable agent skills & superpowers
+├── skills/                  # Reusable agent skills & superpowers (Strix, Graphify, Karpathy, UI/UX, etc.)
+│   ├── strix/
+│   ├── graphify/
 │   ├── andrej-karpathy-skills/
 │   └── superpowers/
 ├── tools/                   # Execution scripts & utilities (browser automation, office tools, etc.)
@@ -33,48 +25,42 @@ Devian/
 
 ---
 
-## 🛠️ Prerequisites & System Requirements
+## 🌐 Multi-Model & Multi-Agent Compatibility
 
-- **Python**: Version 3.10 or higher.
-- **Local Model Gateway (Omniroute)**: Running at `http://localhost:20128/v1` (optional if using cloud/other providers).
-- **Git**: For cloning and fetching repository updates.
+OmniAgent-OS is built to run across leading AI assistants and model providers:
+- **GitHub Copilot** (VS Code / Copilot SDK)
+- **Claude** (Anthropic Claude Code & Desktop)
+- **Gemini** (Google Gemini CLI & API)
+- **Omniroute / Local Gateways** (`http://localhost:20128/v1`)
 
 ---
 
-## 🚀 Installation & Autonomous Setup
+## ⚙️ Prerequisites & Autonomous Installation
 
-You can install Devian and download all ecosystem elements, tools, and dependencies fully autonomously using the provided installation scripts:
+### System Requirements
+- **Python**: Version 3.10 or higher.
+- **Git**: For cloning and fetching repository updates.
+- **Rust / Cargo**: Recommended for high-performance extensions.
 
-### Option 1: Python Installer (Cross-Platform)
+### Installation Commands
 ```bash
-python install.py
-```
+git clone https://github.com/Sudo-Vire/Devian.git OmniAgent-OS
+cd OmniAgent-OS
 
-### Option 2: PowerShell Installer (Windows)
-```powershell
+# Cross-platform Python installer
+python install.py
+
+# Or Windows PowerShell installer
 .\install.ps1
 ```
 
-### Manual Installation
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Sudo-Vire/Devian.git
-   cd Devian
-   ```
-2. **Create virtual environment & install dependencies**:
-   ```bash
-   python -m venv .venv
-   # Windows:
-   .\.venv\Scripts\Activate.ps1
-   # macOS/Linux:
-   source .venv/bin/activate
-   
-   pip install -r requirements.txt
-   ```
+---
+
+## 📜 Authorship & Credits
+
+Please refer to [AUTHORS.md](AUTHORS.md) and [NOTICE](NOTICE) for explicit attribution to upstream creators and open-source contributors for Strix, Graphify, Agency Agents, Claude Subagents, and Andrej Karpathy Skills.
 
 ---
 
-## 📄 License & Contributing
-
-Contributions are welcome! Please open issues or pull requests for enhancements, new agents, or additional skills.
-
+## 📄 License
+Licensed under the [MIT License](LICENSE).
