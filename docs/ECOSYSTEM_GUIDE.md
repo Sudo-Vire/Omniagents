@@ -11,7 +11,7 @@ Devian is structured into modular components designed for high-performance softw
 ### 🌐 Local Model Gateway (Omniroute)
 - **Base Endpoint**: `http://localhost:20128/v1`
 - **Default Model**: `openai/antigravity/gemini-3.1-flash-lite`
-- **Purpose**: Unified local routing gateway for LLM inference across multiple providers and models.
+- **Purpose**: Unified local routing gateway for LLM inference across multiple providers and models. *Note: If Omniroute is not yet downloaded or running, the autonomous installer will guide you through setup and configuration.*
 
 ### 🤖 Dual Agent Ecosystem (`agents/`)
 - **Macro Agent Catalog (`agency-agents/`)**: Domain-specific autonomous agents covering engineering, security, data science, product management, and strategy.
@@ -32,17 +32,17 @@ Devian is structured into modular components designed for high-performance softw
 
 ---
 
-## ⚙️ Prerequisites & Installation
+## ⚙️ Prerequisites & Autonomous Installation
 
-To run Devian and download all ecosystem elements, tools, and dependencies autonomously:
+To run Devian and download all ecosystem elements, tools, and internal dependencies autonomously:
 
 ### System Requirements
 - **Python**: Version 3.10 or higher.
 - **Git**: For cloning and fetching repository updates.
-- **Local LLM Gateway (Omniroute)**: Running at `http://localhost:20128/v1` (optional if using external API providers).
+- **Local LLM Gateway (Omniroute)**: Optional initially — the interactive installer will check for it and guide you if it needs to be installed or configured.
 
 ### Autonomous Installation Commands
-You can install the entire ecosystem and its dependencies via command:
+Run the interactive setup wizard via command:
 
 1. **Clone the repository**:
    ```bash
@@ -50,7 +50,7 @@ You can install the entire ecosystem and its dependencies via command:
    cd Devian
    ```
 
-2. **Run Autonomous Installer**:
+2. **Run Interactive Installer**:
    - **Cross-Platform (Python)**:
      ```bash
      python install.py
