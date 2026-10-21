@@ -1,32 +1,80 @@
-# Google Gemini Master Agent Instructions (GEMINI.md)
+# Master Gemini Agent & Skills Instructions (GEMINI.md)
 
-## 1. Contexto del Proyecto y Reglas de Desarrollo
-Este archivo establece las directrices permanentes para los modelos y agentes Google Gemini operando dentro de OmniAgent.
-- **Filosofía Operativa (Lazy Senior Dev / Ponytail)**: YAGNI, cambios mínimos, quirúrgicos y orientados a la raíz del problema.
-- **Protocolo de Comportamiento Obligatorio**:
-  1. Pensar en voz alta antes de actuar.
-  2. Presentar el plan de la fase actual.
-  3. Solicitar confirmación explícita: *“¿Es correcto o deseas realizar algún cambio?”*.
-  4. Esperar la aprobación del usuario antes de ejecutar cambios.
-  5. Ejecutar únicamente tras recibir confirmación.
+<gemini-master-instructions>
+  <metadata>
+    <target-model>Google Gemini (Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini 3.1, Gemini CLI)</target-model>
+    <purpose>Exhaustive operational directives structured natively in XML for maximum instruction-following fidelity and step-by-step reasoning.</purpose>
+  </metadata>
 
-## 2. Comandos de Verificación (Esencial para agentes Gemini)
-Gemini utiliza estas instrucciones para comprobar la validez de su código:
-- **Comando de instalación:** `python -m pip install -r installation/requirements.txt` (o `npm install`)
-- **Comando de pruebas:** `pytest` / `npm test`
-- **Comando de compilación:** `python -m py_compile tools/*.py installation/*.py` / `npm run build`
-- **Comando de linter:** `ruff check .` / `biome check .`
+  <core-behavior-priority rule="strict">
+    <step id="1">Think out loud before acting.</step>
+    <step id="2">Present the plan of the current phase.</step>
+    <step id="3">Ask for explicit confirmation: 'Is this correct or would you like to make any changes?'</step>
+    <step id="4">Wait for explicit user approval before proceeding to the next phase or executing changes.</step>
+    <step id="5">Execute only after receiving confirmation.</step>
+  </core-behavior-priority>
 
-## 3. Restricciones y Seguridad
-- Nunca expongas credenciales ni claves API de entorno (respalda siempre con variables de entorno o `.env`).
-- Respeta la separación estricta de los 3 módulos del proyecto: `installation/` (descargas oficiales independientes), `pre-downloaded/` (activos locales), y `orchestration/` (instrucciones multi-agente).
+  <section id="1" title="Local Model Gateway (Omniroute Gateway)">
+    <endpoint>http://localhost:20128/v1</endpoint>
+    <model>Selected local runtime model</model>
+    <objective>High-speed local inference, zero external costs, absolute code privacy.</objective>
+  </section>
 
-## 4. Características avanzadas de Gemini compatibles
-- **Modularización con `@file`**: Puedes importar contextos adicionales escribiendo referencias como `@./orchestration/instructions/gemini/gemini-config.json`.
-- **Jerarquía Ascendente**: Gemini fusiona inteligentemente contextos globales (`~/.gemini/GEMINI.md`) con el `GEMINI.md` raíz de este repositorio.
+  <section id="2" title="Operational Principles and Philosophy (Ponytail & Lazy Senior Dev)">
+    <principle name="YAGNI">Minimal, surgical, direct changes. The best line of code is the one never written.</principle>
+    <principle name="Action-First">Direct, to-the-point responses. Commands and code snippets first; explanations after.</principle>
+    <principle name="Reusability">Prioritize standard libraries, existing code, and native features.</principle>
+    <principle name="Root-Cause-Correction">Address root causes, not symptoms.</principle>
+  </section>
 
-## 5. Catálogo Dual y Metodología de Ejecución (Master Rulebook)
-- **Fase 0 – Descubrimiento y Verificación**: Inspección con herramientas de código antes de proponer cambios.
-- **Fase 1 – Implementación Quirúrgica**: Cambios limpios y completos.
-- **Fase 2 – Verificación y Validación**: Pruebas y linters obligatorios.
-- **Ecosistema Dual**: Integración de macro-agentes (`agency-agents`), micro-subagentes (`claude-subagents`), habilidades (`skills/` incluyendo Strix y Graphify), y pasarela local Omniroute en `http://localhost:20128/v1`.
+  <section id="3" title="Standard Workflow and Execution Methodology">
+    <phase id="0" name="Mandatory Decision Tree">
+      <rule>Determine task complexity: Simple (YAGNI + Immediate Action) vs Complex (Full 8-phase SDLC).</rule>
+    </phase>
+    <phase id="1" name="Mandatory Skill and Tool Invocation">
+      <rule>Invoke skill tool and Graphify query before writing code.</rule>
+    </phase>
+    <phase id="2" name="Catalog and Agent Selection">
+      <rule>Select macro catalog (agency-agents) or tactical subagents (claude-subagents).</rule>
+    </phase>
+    <phase id="3" name="Execution with Virtual Office and Aider">
+      <rule>Generate plan in OFFICE_RESULT.md, apply code via Aider.</rule>
+    </phase>
+    <phase id="4" name="Validation and Verification">
+      <rule>Run linters (ruff, biome) and visual checks (Browser-Use).</rule>
+    </phase>
+    <phase id="5" name="Git Workflow">
+      <rule>Conventional Commits and branching strategy.</rule>
+    </phase>
+    <phase id="6" name="Cleanup and Closure">
+      <rule>Remove temporary files, store session state in session-state/files/.</rule>
+    </phase>
+  </section>
+
+  <section id="4" title="Dual Collaboration Ecosystem">
+    <domain area="Design">design-ui-designer.md</domain>
+    <domain area="Engineering">engineering-software-architect.md, engineering-senior-developer.md</domain>
+    <domain area="Security">Strix penetration testing framework</domain>
+    <domain area="Product & Strategy">product-manager.md</domain>
+  </section>
+
+  <section id="5" title="Software Development Life Cycle (SDLC)">
+    <lifecycle-phases>
+      Phase 1: Requirements & Planning
+      Phase 2: Design
+      Phase 3: Development & Implementation
+      Phase 4: Security & Compliance
+      Phase 5: Testing & QA
+      Phase 6: Git Workflow
+      Phase 7: Deployment (Cloudflare)
+      Phase 8: Maintenance & Research
+    </lifecycle-phases>
+  </section>
+
+  <section id="6" title="Golden Rules and Common Mistakes">
+    <rule>Never skip confirmation in any SDLC phase.</rule>
+    <rule>Always use absolute Markdown links.</rule>
+    <rule>Always perform visual validation for UI changes.</rule>
+  </section>
+
+</gemini-master-instructions>
