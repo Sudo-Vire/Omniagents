@@ -1,16 +1,13 @@
-# Gemini Orchestration Instructions (Google Gemini / API)
+# Gemini Orchestration Instructions & System Config
 
-This document defines the custom orchestration rules created by **Sudo-Vire** for running OmniAgent workflows using Google Gemini models.
+Google Gemini models do not read a local `gemini.md` file by default. Instead, Gemini ingests system instructions via API payloads, CLI configuration flags, or structured JSON configuration files such as **`gemini-config.json`**.
 
 ---
 
-## ⚡ Behavior & Execution Guidelines for Gemini
+## ⚡ How to Configure Gemini for OmniAgent
 
-1. **Large-Context Analysis**:
-   - Leverage Gemini's large context window to ingest entire repositories, agency-agents, and pre-downloaded skills in a single pass.
-2. **Precision & Completeness**:
-   - Make precise, surgical changes. Avoid regressions.
-3. **Action-First & Concise**:
-   - Suppress unnecessary preamble; provide immediate actionable code and commands.
-4. **Tool Utilization**:
-   - Reference pre-downloaded tools in `pre-downloaded/tools/` and skills in `pre-downloaded/skills/`.
+1. **System Prompt Injection**: Pass the system instruction defined in `gemini-config.json` into the Gemini API client or CLI system prompt parameter.
+2. **Execution Rules**:
+   - Leverage Gemini's large-context window for repository-wide analysis.
+   - Follow the Lazy Senior Dev / Ponytail principle: minimal, surgical changes.
+   - Access pre-downloaded skills (`pre-downloaded/skills/`) and tools (`pre-downloaded/tools/`).
