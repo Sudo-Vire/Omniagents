@@ -1,6 +1,6 @@
-# Devian Advanced Prerequisite & Interactive PowerShell Installer
+# Omniagents Advanced Prerequisite & Interactive PowerShell Installer
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "         Devian AI Ecosystem - Prerequisite & Setup Wizard      " -ForegroundColor Cyan
+Write-Host "         Omniagents AI Ecosystem - Prerequisite & Setup Wizard      " -ForegroundColor Cyan
 Write-Host "================================================================" -ForegroundColor Cyan
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
@@ -70,7 +70,7 @@ try {
     Write-Host "[!] Omniroute Gateway is NOT running on http://localhost:20128/v1." -ForegroundColor Yellow
     Write-Host ""
     Write-Host "--- HOW TO OBTAIN & INSTALL OMNIROUTE ---" -ForegroundColor Cyan
-    Write-Host "1. Omniroute provides local LLM routing for Devian agents." -ForegroundColor White
+    Write-Host "1. Omniroute provides local LLM routing for Omniagents agents." -ForegroundColor White
     Write-Host "2. Start your Omniroute service locally on port 20128." -ForegroundColor White
     Write-Host "3. Alternatively, configure custom API endpoints below." -ForegroundColor White
     Write-Host ""
@@ -89,7 +89,7 @@ try {
 }
 
 Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "      Devian Ecosystem Installation & Setup Completed!          " -ForegroundColor Cyan
+Write-Host "      Omniagents Ecosystem Installation & Setup Completed!          " -ForegroundColor Cyan
 Write-Host "================================================================" -ForegroundColor Cyan
 Write-Host "1. Activate venv: .\.venv\Scripts\Activate.ps1" -ForegroundColor Yellow
 Write-Host "2. Explore agents: agents/" -ForegroundColor Yellow

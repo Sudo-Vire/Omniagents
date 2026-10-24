@@ -1,9 +1,9 @@
-# Devian Makefile
+# Omniagents Makefile
 
 .PHONY: help install lint test clean
 
 help:
-	@echo "Devian AI Ecosystem Commands:"
+	@echo "Omniagents AI Ecosystem Commands:"
 	@echo "  make install  - Run the autonomous installer script"
 	@echo "  make lint     - Check Python syntax and lint code"
 	@echo "  make clean    - Remove build artifacts, caches, and venv"

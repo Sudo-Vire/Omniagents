@@ -1,39 +1,57 @@
-# Contexto del Proyecto y Reglas de Desarrollo
+﻿# OmniAgent — Gemini Master Instructions & Command-Driven Development
 
-## 1. Stack Tecnológico y Arquitectura (OmniAgent)
-OmniAgent es un ecosistema autónomo y multi-modelo estructurado en 3 módulos independientes:
-- **Lenguaje / Framework:** Python 3.10+, Node.js / TypeScript, Cross-platform CLI.
-- **Módulos Principales:**
-  - `installation/`: Instaladores autónomos e independientes que descargan herramientas de fuentes oficiales.
-  - `pre-downloaded/`: Catálogos de agentes (`agency-agents`, `claude-subagents`), habilidades (`skills/` incluyendo Strix y Graphify) y herramientas (`tools/`).
-  - `orchestration/`: Instrucciones de orquestación multi-agente para Claude, Copilot, Gemini, OpenAI y otros modelos.
+This document establishes the permanent, comprehensive, and detailed instructions for the AI assistant in this repository. These guidelines must be applied **automatically and mandatorily** in every prompt, interaction, refactoring, review, or code development.
 
-## 2. Comandos de Verificación (Esencial para agentes Gemini)
-Gemini utiliza estas instrucciones para comprobar y compilar el proyecto de forma autónoma:
-- **Instalación:** `python install.py` (o `python -m pip install -r installation/requirements.txt`)
-- **Compilación / Sintaxis:** `python -m py_compile tools/*.py installation/*.py`
-- **Pruebas:** `pytest`
-- **Linter / Formato:** `ruff check .` y `biome check .`
+## 1. How the Assistant Must Behave (Main Rule)
+The assistant **must always** follow this priority order:
+1. **Think out loud** before acting.
+2. **Present the plan** of the current phase.
+3. **Ask for explicit confirmation**: **“Is this correct or would you like to make any changes?”**
+4. **Wait for explicit user approval** before proceeding to the next phase or executing changes.
+5. **Execute only after receiving confirmation**.
 
-## 3. Directrices de Estilo y Rigidez (Simulación de Temperatura Baja)
-- **Filosofía Lazy Senior Dev / Ponytail:** YAGNI (el mejor código es el que no se escribe), cambios mínimos, quirúrgicos y orientados a la raíz del problema.
-- **Protocolo de Comportamiento:**
-  1. Pensar en voz alta antes de actuar.
-  2. Presentar el plan de la fase actual.
-  3. Solicitar confirmación explícita: *“¿Es correcto o deseas realizar algún cambio?”*.
-  4. Esperar la aprobación del usuario antes de ejecutar cambios.
-  5. Ejecutar únicamente tras recibir confirmación.
-- Utiliza siempre tipado explícito y sigue la arquitectura de carpetas existente.
+## 2. Local Model Gateway (Omniroute Gateway)
+- **Base Endpoint**: `http://localhost:20128/v1`
+- **Model**: `openai/antigravity/gemini-3.1-flash-lite`
+- **Purpose**: Ensure high-speed local inference, zero external costs, and absolute privacy of the source code.
 
-## 4. Gestión de Dependencias y Seguridad
-- No inventes librerías ni paquetes que no existan en el ecosistema oficial.
-- Si necesitas una nueva dependencia, pregúntame antes de instalarla.
-- Nunca escribas credenciales, tokens o claves API en el código; utiliza variables de entorno en `.env`.
+## 3. Operational Principles and Philosophy ("Ponytail" & Lazy Senior Dev)
+- **YAGNI**: The best line of code is the one that never gets written. Minimal, surgical, and direct changes.
+- **Action First (ADHD)**: Direct, to-the-point responses. Commands, paths, or code snippets first; explanations later.
+- **Reusability > Creation**: Prioritize standard libraries, existing code, and native features before adding new dependencies or abstractions.
+- **Root Cause Correction**: Address the root cause of problems, not the symptoms.
+
+## 4. Comandos de Verificación y Automatización (Command-Driven)
+Las herramientas de desarrollo de Gemini leen este documento para saber exactamente **cómo interactuar con el sistema**. Es mandatorio ejecutar estos comandos de terminal exactos para validar de forma autónoma que el código generado no rompa el proyecto antes de entregarlo:
+
+- **Instalación de dependencias:**
+  ```bash
+  python install.py
+  python -m pip install -r installation/requirements.txt
+  ```
+- **Compilación y verificación de sintaxis:**
+  ```bash
+  python -m py_compile installation/*.py tools/*.py
+  ```
+- **Ejecución de pruebas (Test Suite):**
+  ```bash
+  pytest
+  ```
+- **Linter y Formato de Código:**
+  ```bash
+  ruff check .
+  ruff format .
+  biome check .
+  ```
 
 ---
 
-## 5. Módulos de Instrucciones Avanzadas (Modularización con `@file`)
-Para mantener el contexto limpio y estructurado, Gemini importará automáticamente los subarchivos correspondientes:
-- @./sub-rules-sdlc.md
-- @./sub-rules-ecosystem.md
-- @./sub-rules-superpowers.md
+## 5. Modularización Nativa mediante `@file`
+Para mantener un contexto limpio sin perder información, Gemini indexa y lee automáticamente los siguientes submódulos:
+- @sub-rules/sub-rules-sdlc.md
+- @docs/AGENTS_CATALOG.md
+- @sub-rules/sub-rules-superpowers.md
+- @sub-rules/sub-rules-git-workflow.md
+
+## 6. Context Caching (Caché de Contexto)
+Para los archivos estáticos grandes cargados mediante `@file` (como `@docs/AGENTS_CATALOG.md`, `@sub-rules-sdlc.md`, etc.), se habilita el almacenamiento en caché de contexto (*Context Caching*) en el gateway/API de Gemini. Esto optimiza el uso de tokens repetitivos, reduce drásticamente la latencia y acelera la respuesta del modelo en iteraciones multi-agente.

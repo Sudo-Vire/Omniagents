@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Devian Advanced Ecosystem & Prerequisite Installer
+Omniagents Advanced Ecosystem & Prerequisite Installer
 Verifies system prerequisites (Python, Git, Rust/Cargo), sets up virtual environment,
 installs dependencies, checks/guides Omniroute setup, and configures environment variables.
 """
@@ -38,7 +38,7 @@ def check_gateway():
 
 def main():
     print("================================================================")
-    print("         Devian AI Ecosystem - Prerequisite & Setup Wizard      ")
+    print("         Omniagents AI Ecosystem - Prerequisite & Setup Wizard      ")
     print("================================================================")
 
     root_dir = os.path.dirname(os.path.abspath(__file__))
@@ -98,7 +98,7 @@ def main():
     else:
         print("[!] Omniroute Gateway is NOT running or installed on http://localhost:20128/v1.")
         print("\n    How to obtain & set up Omniroute:")
-        print("    1. Omniroute provides local LLM routing for Devian agents.")
+        print("    1. Omniroute provides local LLM routing for Omniagents agents.")
         print("    2. Start your Omniroute service on port 20128.")
         print("    3. Or configure custom API base endpoints below.")
         
@@ -114,7 +114,7 @@ def main():
 
     # 4. Summary
     print("\n================================================================")
-    print("      Devian Ecosystem Installation & Setup Completed!          ")
+    print("      Omniagents Ecosystem Installation & Setup Completed!          ")
     print("================================================================")
     if os.name == "nt":
         print("1. Activate venv: .\\.venv\\Scripts\\Activate.ps1")

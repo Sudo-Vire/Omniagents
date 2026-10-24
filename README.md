@@ -54,7 +54,7 @@ OmniAgent provides unified orchestration across leading AI models and assistants
 
 ### Installation Commands
 ```bash
-git clone https://github.com/Sudo-Vire/Devian.git OmniAgent
+git clone https://github.com/Sudo-Vire/Omniagents.git OmniAgent
 cd OmniAgent/installation
 
 # Cross-platform Python installer

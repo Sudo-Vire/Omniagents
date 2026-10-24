@@ -1,6 +1,6 @@
-# Contributing to Devian
+# Contributing to Omniagents
 
-Thank you for your interest in contributing to **Devian**! We welcome contributions of new agents, skills, tools, bug fixes, and documentation improvements.
+Thank you for your interest in contributing to **Omniagents**! We welcome contributions of new agents, skills, tools, bug fixes, and documentation improvements.
 
 ## Development Workflow
 

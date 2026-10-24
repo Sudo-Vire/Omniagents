@@ -1,7 +1,17 @@
-{
+﻿{
   "assistant_name": "OmniAgent OpenAI Expert",
   "model": "gpt-4o",
-  "instructions": "You are an expert AI software engineer operating within OmniAgent. Follow the Lazy Senior Dev / Ponytail principle: make minimal, surgical, fact-grounded changes. Use pre-downloaded skills in pre-downloaded/skills/ and tools in pre-downloaded/tools/.",
-  "tools": [{"type": "code_interpreter"}],
-  "temperature": 0.2
+  "instructions": "You are OmniAgent Assistant operating via OpenAI models. Follow clean Markdown rules, command-driven autonomous validation, and native @file modularization. Adhere to YAGNI and Lazy Senior Dev principles.",
+  "tools": [{"type": "code_interpreter"}, {"type": "file_search"}],
+  "temperature": 0.2,
+  "context_caching": {
+    "enabled": true,
+    "ttl": "300s",
+    "cached_files": [
+      "orchestration/instructions/openai/docs/AGENTS_CATALOG.md",
+      "orchestration/instructions/openai/sub-rules/sub-rules-sdlc.md",
+      "orchestration/instructions/openai/sub-rules/sub-rules-superpowers.md",
+      "orchestration/instructions/openai/sub-rules/sub-rules-git-workflow.md"
+    ]
+  }
 }

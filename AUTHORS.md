@@ -5,12 +5,6 @@
 ## Core Maintainer & Creator
 - **Sudo-Vire** — Project Lead, Creator of Custom Orchestration Frameworks (`orchestration/`), and Integration Architect.
 
-## AI Runtimes & SDKs
-- **Google DeepMind & GitHub Copilot SDK** — Foundational Copilot SDK, agent host runtime, and VS Code AI integration (`orchestration/agents/copilot-instructions.md`).
-- **Anthropic Claude & Claude Code** — Advanced reasoning models and tactical micro-subagents framework (`orchestration/agents/claude-instructions.md`, `pre-downloaded/agents/claude-subagents`).
-- **Google Gemini** — Large-context code analysis and fast model execution (`orchestration/agents/gemini-instructions.md`).
-- **OpenAI** — API specifications, model runtimes, and embedding interfaces.
-
 ## Security & Knowledge Graph Tools
 - **Strix Security Team** — Autonomous AI penetration testing, vulnerability discovery, and exploit validation framework (`pre-downloaded/skills/strix`).
 - **Graphify Contributors** — Knowledge graph generation, god nodes, and structural codebase mapping engine (`pre-downloaded/skills/graphify`).

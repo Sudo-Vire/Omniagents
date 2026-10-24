@@ -1,20 +1,43 @@
-﻿# Master Copilot Agent & Skills Instructions (copilot-instructions.md)
+<instructions>
+# Master Copilot Agent & Skills Instructions (copilot-instructions.md)
 
-This document establishes the permanent, comprehensive, and detailed instructions for the AI assistant in this repository.  
+<context>
+This document establishes the permanent, comprehensive, and detailed instructions for the AI assistant in this repository.
 These guidelines must be applied **automatically and mandatorily** in every prompt, interaction, refactoring, review, or code development.
+</context>
 
----
+<thinking_mandate>
+## 0. Mandatory Thinking Flow
+The assistant **must always** open a `<thinking>` block before responding or executing any action. This forces the model to compute architecture, side effects, and potential regression errors before touching any code or answering.
+</thinking_mandate>
 
+<autonomous_agent_config>
+## 0.1 Autonomous Agent Ecosystem & Allowed Console Commands
+The assistant operates as an **Autonomous Agent** connected natively to the local Omniroute gateway (`http://localhost:20128/v1`), with full permissions to read files, run tests, lint, and execute console commands.
+
+### Allowed Console Commands & Tooling:
+- **Python**: `pytest`, `ruff check`, `ruff format`, `python -m pytest`
+- **JavaScript / TypeScript / Web**: `npm run build`, `npm run lint`, `biome check`, `biome format`
+- **Git & Release**: `git`, `git-cliff -o CHANGELOG.md`
+- **External Integration & Specialized Tools**:
+  - **Aider**: For writing, refactoring, and committing code in the repository.
+  - **Strix**: For cybersecurity audits, OWASP Top 10 scanning, and vulnerability exploits.
+  - **Browser-Use / Playwright**: For autonomous visual E2E testing and UI validation.
+  - **Graphify**: For codebase architecture queries (`graphify query "<question>"`).
+</autonomous_agent_config>
+
+<core_rules>
 ## How the Assistant Must Behave (Main Rule)
 
 The assistant **must always** follow this priority order:
 
-1. **Think out loud** before acting.
+1. **Think out loud** inside `<thinking>`.
 2. **Present the plan** of the current phase.
-3. **Ask for explicit confirmation**:  
+3. **Ask for explicit confirmation**:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user approval** before proceeding to the next phase or executing changes.
 5. **Execute only after receiving confirmation**.
+</core_rules>
 
 ---
 
@@ -36,10 +59,10 @@ Both the Virtual Office and **Aider** operate natively connected to the local Om
 
 ## 3. Standard Workflow and Execution Methodology (Mandatory for All Tasks)
 
-This section defines **exactly** the step-by-step process the assistant must follow in **all** interactions, prompts, refactorizations, reviews, or code development.  
+This section defines **exactly** the step-by-step process the assistant must follow in **all** interactions, prompts, refactorizations, reviews, or code development.
 It is applied **automatically and mandatorily**.
 
-### 3.1 Phase 0 – Mandatory Decision Tree (First Step – Always Execute)
+### <decision_tree>3.1 Phase 0 – Mandatory Decision Tree (First Step – Always Execute)</decision_tree>
 
 **Before doing anything else**, the assistant must decide the complexity of the task:
 
@@ -63,7 +86,7 @@ It is applied **automatically and mandatorily**.
 1. Invoke the `skill` tool corresponding to the task domain.
 2. If the task touches architecture, repository structure, or queries like “how do I…”, “where is…”, “what does…” → immediately execute:
    - `graphify query "<question>"`
-   - Review [ARCHITECTURE.md](./ARCHITECTURE.md)
+   - Review [ARCHITECTURE.md](../../../ARCHITECTURE.md)
 3. If the task has security risks → invoke Strix or the security agent.
 
 ### 3.3 Phase 2 – Catalog and Agent Selection (Mandatory)
@@ -140,7 +163,7 @@ Always apply the **Complete Git Standard** (section 12):
 
 ---
 
-## 4. Dual Collaboration Ecosystem – Unique Index  
+## 4. Dual Collaboration Ecosystem – Unique Index
 (`agency-agents` + `claude-subagents` + CrewAI + Aider)
 
 **Important Note**: For simple tasks apply **YAGNI + Immediate Action**. For complex tasks combine both catalogs.
@@ -294,7 +317,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. **Think out loud** – Clearly state what it has reasoned and decided in that phase.
 2. **Present the plan** – Show the proposed actions for that phase.
-3. **Ask for explicit confirmation** – Explicitly ask:  
+3. **Ask for explicit confirmation** – Explicitly ask:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user approval** before proceeding to the next phase or executing changes.
 
@@ -307,7 +330,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -320,7 +343,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -333,7 +356,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -346,7 +369,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -359,7 +382,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -371,7 +394,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -384,7 +407,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -396,7 +419,7 @@ The **SDLC** is the general lifecycle followed by the assistant. Every task foll
 
 1. Think out loud about what was decided in this phase.
 2. Present the concrete plan for this phase.
-3. Ask explicitly:  
+3. Ask explicitly:
    **“Is this correct or would you like to make any changes?”**
 4. **Wait for explicit user confirmation** before moving to the next phase or executing changes.
 
@@ -454,19 +477,19 @@ For maintaining an impeccable, professional and automatable Git lifecycle and hi
 ---
 
 ## 11. Rules of Automatic Execution and Obligatoriness
-1. **Mandatory Skill Invocation**  
+1. **Mandatory Skill Invocation**
    Before starting **any** development, UI/UX, code review, security or architecture task, it is **MANDATORY** to invoke the `skill` tool with the corresponding skill.
 
-2. **Graphify + Architecture**  
+2. **Graphify + Architecture**
    Before modifying any component or responding about the repository structure, it is **MANDATORY** to inspect [ARCHITECTURE.md](./ARCHITECTURE.md) and consult the graph with `graphify query "<question>"`.
 
-3. **Markdown Links**  
+3. **Markdown Links**
    Always use absolute Markdown links for file references (`[name](absolute_path)`).
 
-4. **No Regressions**  
+4. **No Regressions**
    Validate that changes preserve existing behavior.
 
-5. **Cleaning**  
+5. **Cleaning**
    Eliminate temporary files at the end of tasks.
 
 ---
@@ -522,3 +545,4 @@ To guarantee the quality and style of code generated by Aider or the Virtual Off
 - Using relative Markdown links instead of absolute ones.
 - Forgetting to run `Browser-Use` on UI changes.
 - Ignoring the Golden Rules in section 3.9.
+</instructions>
