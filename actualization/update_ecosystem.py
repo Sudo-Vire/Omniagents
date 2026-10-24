@@ -1,11 +1,14 @@
 ﻿import os
 import sys
 import subprocess
+import json
+import urllib.request
 
 ECOSYSTEM_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PRE_DOWNLOADED_DIR = os.path.join(ECOSYSTEM_ROOT, "pre-downloaded")
 INSTALLATION_DIR = os.path.join(ECOSYSTEM_ROOT, "installation")
 INSTRUCTIONS_DIR = os.path.join(ECOSYSTEM_ROOT, "orchestration", "instructions")
+GATEWAY_URL = "http://localhost:20128/v1/chat/completions"
 
 def run_installation_script(resource_path):
     print("\n--- Buscando script de instalación para el recurso ---")
@@ -28,8 +31,55 @@ def run_installation_script(resource_path):
         if os.path.exists(general_install):
             subprocess.run([sys.executable, general_install])
 
+def generate_ai_integration_block(resource_type, name):
+    print(f"\n[IA Integration] Consultando al gateway de Omniroute para generar documentación detallada para '{name}'...")
+    prompt = f"""
+    Genera un bloque de documentación detallado en Markdown puro (sin etiquetas XML) para integrar un nuevo recurso en el ecosistema Omniagents.
+    Tipo de recurso: {resource_type}
+    Nombre/Identificador: {name}
+    
+    El bloque debe incluir:
+    - Identificador y categoría.
+    - Propósito y caso de uso avanzado.
+    - Política de uso, integración y validación en el flujo de desarrollo.
+    
+    Devuelve ÚNICAMENTE el bloque en Markdown estructurado (con cabeceras h2 o h3 y listas detalladas).
+    """
+    
+    payload = {
+        "model": "openai/antigravity/gemini-3.1-flash-lite",
+        "messages": [
+            {"role": "system", "content": "Eres un arquitecto experto en documentación de sistemas de IA. Genera documentación técnica impecable."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.2
+    }
+    
+    try:
+        req = urllib.request.Request(
+            GATEWAY_URL,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json", "Authorization": "Bearer local-gateway"}
+        )
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            if content:
+                print("  [OK] Bloque generado exitosamente mediante IA.")
+                return content.strip()
+    except Exception as e:
+        print(f"  [!] Aviso: Gateway no disponible ({e}). Usando plantilla avanzada enriquecida.")
+        
+    return f"""## Model Context Protocol & Advanced Tooling: {name}
+- **Resource Identifier**: `{name}` ({resource_type})
+- **Purpose**: Advanced ecosystem extension providing specialized execution and processing capabilities.
+- **Integration & Usage Policy**: Integrated natively into Omniagents tooling guidelines. Adhere to YAGNI and validation protocols when invoking.
+"""
+
 def integrate_into_instructions(resource_type, name):
-    print(f"\n[Integración Inteligente] Integrando '{name}' ({resource_type}) en las instrucciones correctas del ecosistema...")
+    print(f"\n[Integración Inteligente con IA] Procesando '{name}' ({resource_type})...")
+    
+    ai_block = generate_ai_integration_block(resource_type, name)
     
     target_docs = []
     if "Agente" in resource_type:
@@ -38,49 +88,38 @@ def integrate_into_instructions(resource_type, name):
             os.path.join(INSTRUCTIONS_DIR, "openai", "docs", "AGENTS_CATALOG.md"),
             os.path.join(INSTRUCTIONS_DIR, "copilot", "docs", "AGENTS_CATALOG.md")
         ]
-        section_header = "### 4.19 Nuevos Agentes Dinámicos"
-        entry = f"\n- **Agente**: `{name}` — Añadido al ecosistema multi-agente."
     elif "Herramienta" in resource_type or "Framework" in resource_type or "MCP" in resource_type:
         target_docs = [
             os.path.join(INSTRUCTIONS_DIR, "gemini", "docs", "TOOLING_AND_VALIDATION.md"),
             os.path.join(INSTRUCTIONS_DIR, "openai", "docs", "TOOLING_AND_VALIDATION.md"),
             os.path.join(INSTRUCTIONS_DIR, "copilot", "docs", "TOOLING_AND_VALIDATION.md")
         ]
-        section_header = "## 5. Model Context Protocol (MCP) & Custom Tools"
-        entry = f"\n- **Tool / MCP Server**: `{name}` — Integrado para soporte de herramientas y protocolos avanzados."
     elif "Skill" in resource_type:
         target_docs = [
             os.path.join(INSTRUCTIONS_DIR, "gemini", "docs", "TOOLING_AND_VALIDATION.md"),
             os.path.join(INSTRUCTIONS_DIR, "openai", "docs", "TOOLING_AND_VALIDATION.md"),
             os.path.join(INSTRUCTIONS_DIR, "copilot", "docs", "TOOLING_AND_VALIDATION.md")
         ]
-        section_header = "## 6. Habilidades Dinámicas (Skills)"
-        entry = f"\n- **Skill**: `{name}` — Habilidad operativa integrada."
     else:
         target_docs = [
             os.path.join(INSTRUCTIONS_DIR, "gemini", "sub-rules", "sub-rules-sdlc.md"),
             os.path.join(INSTRUCTIONS_DIR, "openai", "sub-rules", "sub-rules-sdlc.md")
         ]
-        section_header = "## 3. Sub-reglas Personalizadas"
-        entry = f"\n- **Sub-regla**: `{name}` — Directiva de ejecución integrada."
 
     for doc_path in target_docs:
         if os.path.exists(doc_path):
             with open(doc_path, "r", encoding="utf-8") as f:
                 content = f.read()
             
-            if section_header not in content:
-                content += f"\n\n{section_header}\n{entry}\n"
-            else:
-                parts = content.split(section_header)
-                content = parts[0] + section_header + "\n" + entry + parts[1]
+            # Añadir el bloque generado por IA al final del documento de forma estructurada
+            content += f"\n\n{ai_block}\n"
                 
             with open(doc_path, "w", encoding="utf-8") as f:
                 f.write(content)
-            print(f"  -> Integrado correctamente en: {os.path.relpath(doc_path, ECOSYSTEM_ROOT)}")
+            print(f"  -> Integrado formalmente en: {os.path.relpath(doc_path, ECOSYSTEM_ROOT)}")
 
 def main():
-    print("=== Asistente Avanzado de Actualización del Ecosistema Omniagents ===")
+    print("=== Asistente Avanzado de Actualización del Ecosistema Omniagents (AI-Powered) ===")
     
     print("\n¿Qué deseas añadir al ecosistema?")
     print("1. Agente (agency-agents / claude-subagents)")
@@ -123,13 +162,13 @@ def main():
         print(f"\n✅ El {resource_type} '{name}' no existe previamente. Creando directorio...")
         os.makedirs(resource_path, exist_ok=True)
         
-    # Integración inteligente en las instrucciones correctas
+    # Integración con generación por IA
     integrate_into_instructions(resource_type, name)
     
     # Ejecutar script de instalación
     run_installation_script(resource_path)
     
-    print(f"\n✨ ¡Ecosistema actualizado, integrado e instalado con éxito para '{name}'!")
+    print(f"\n✨ ¡Ecosistema actualizado, integrado con IA e instalado con éxito para '{name}'!")
 
 if __name__ == "__main__":
     main()
