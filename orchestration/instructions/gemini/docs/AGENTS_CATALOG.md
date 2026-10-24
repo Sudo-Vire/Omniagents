@@ -141,5 +141,5 @@
   1. CrewAI designs the specific workflow in OFFICE_RESULT.md.
   2. Aider implements the code.
 
-- **Nuevo Framework/Plugin/MCP/Prompt**: `mcp-sequential-thinkings` (Añadido/Actualizado).
 - **Nuevo Framework/Plugin/MCP/Prompt**: `mcp-sequential-thinking` (Añadido/Actualizado).
+
