@@ -4,7 +4,7 @@ Cuando el usuario solicite actualizar las instrucciones de todos los agentes seg
 
 1. **Escaneo de Modelos**: El script analiza las carpetas de instrucciones en `orchestration/instructions/` (Gemini, OpenAI, Copilot, Claude).
 2. **Verificación Inteligente (IA / Omniroute Gateway)**:
-   - El script consulta el gateway local (`http://localhost:20128/v1`) para analizar la coherencia y proponer las modificaciones o creaciones de ficheros necesarias para cada runtime.
+   - El script consulta al LLM en uso para analizar la coherencia y proponer las modificaciones o creaciones de ficheros necesarias para cada runtime.
 3. **Optimización por Modelo**:
    - **Gemini**: Markdown puro, command-driven, `@file` modular y caché de contexto.
    - **OpenAI**: Markdown puro, Assistants API (`assistant-instructions.json`) y submódulos.
