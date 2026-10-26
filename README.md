@@ -1,14 +1,13 @@
-# OmniAgent — Universal AI Agent & Multi-Model Orchestration Ecosystem
+﻿# OmniAgent — Universal AI Agent & Multi-Model Orchestration Ecosystem
 
-**OmniAgent** is an open-source, production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
+**OmniAgent** is a production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
 
 ---
 
-## 📂 Project Structure (3 Independent Core Modules)
+## 📂 Project Structure (4 Core Modules)
 
 ```text
 OmniAgent/
-├── CLAUDE.md                # Native instruction file for Claude (Anthropic)
 ├── installation/            # [Independent Module] Autonomous installers downloading tools from official sources
 │   ├── install.py           # Python prerequisite & environment setup wizard
 │   ├── install.ps1          # PowerShell setup wizard
@@ -18,30 +17,30 @@ OmniAgent/
 ├── pre-downloaded/          # [Independent Module] Standalone pre-downloaded ecosystem assets
 │   ├── agents/              # Macro agents (agency-agents) & micro-subagents (claude-subagents)
 │   ├── skills/              # Pre-downloaded skills (Strix, Graphify, Karpathy, UI/UX, Vercel, etc.)
-│   └── tools/               # Automation scripts (browser_agent.py, office.py)
-└── orchestration/           # [Independent Module] Multi-agent orchestration rules and model instructions
-    ├── instructions/        # Model-specific instructions (claude/, copilot/, gemini/, openai/, others/)
-    └── docs/                # Ecosystem guides
+│   └── tools/               # Automation scripts & MCP servers (mcp-sequential-thinking, etc.)
+├── orchestration/           # [Independent Module] Multi-agent orchestration rules and model instructions
+│   ├── instructions/        # Model-specific instructions (claude/, copilot/, gemini/sub-rules/, openai/sub-rules/, others/)
+│   └── docs/                # Ecosystem guides & tooling validation
+└── actualization/           # [Independent Module] AI-powered ecosystem updaters & cross-model synchronization
+    ├── update_ecosystem.py  # Interactive assistant to add agents, tools, skills, or MCPs with AI-generated docs
+    └── update_model_instructions.py # AI-verified cross-model instruction synchronizer
 ```
 
 ---
 
+## 🧠 Orchestration Module (`orchestration/`)
+Tailored multi-agent instruction frameworks optimized for each LLM runtime:
+- **GitHub Copilot**: `orchestration/instructions/copilot/copilot-instructions.md`
+- **Claude (Anthropic)**: `orchestration/instructions/claude/CLAUDE.md`
+- **Google Gemini**: `orchestration/instructions/gemini/GEMINI.md` (with Context Caching & modular `sub-rules/`)
+- **OpenAI / GPT**: `orchestration/instructions/openai/OPENAI.md` & `assistant-instructions.json` (with Assistants API support)
 
 ---
 
-## 🧠 Orchestration Module (`orchestration/`)
-Created by **Sudo-Vire**, the orchestration module contains custom multi-agent instruction frameworks tailored for specific LLM runtimes:
-- **GitHub Copilot**: `orchestration/agents/copilot-instructions.md`
-- **Claude (Anthropic)**: `orchestration/agents/claude-instructions.md`
-- **Gemini (Google)**: `orchestration/agents/gemini-instructions.md`
-
-## 🌐 Multi-Agent & Multi-Model Orchestration
-
-OmniAgent provides unified orchestration across leading AI models and assistants:
-- **GitHub Copilot** (VS Code / Copilot SDK)
-- **Claude** (Anthropic Claude Code & Desktop)
-- **Gemini** (Google Gemini CLI & API)
-- **Omniroute / Local Gateways** (`http://localhost:20128/v1`)
+## 🔄 AI-Powered Ecosystem Updating & Actualization (`actualization/`)
+OmniAgent includes autonomous tools to expand the ecosystem and synchronize instructions across models:
+- **Add Resources**: Run `python actualization/update_ecosystem.py` to interactively add agents, MCP servers, skills, or sub-rules. The system uses the local Omniroute AI gateway to generate rich, context-aware integration documentation automatically.
+- **Sync Instructions**: Run `python actualization/update_model_instructions.py` to verify and align multi-model instructions.
 
 ---
 
@@ -67,10 +66,9 @@ python install.py
 ---
 
 ## 📜 Authorship & Copyright Attribution
-
 Please refer to [AUTHORS.md](AUTHORS.md) and [NOTICE](NOTICE) for explicit copyright attribution to upstream creators for Strix, Graphify, Agency Agents, Claude Subagents, and Andrej Karpathy Skills.
 
 ---
 
 ## 📄 License
-Licensed under the [MIT License](LICENSE).
+Licensed under the **Non-Commercial Software License Agreement** (Commercialization without explicit written permission from Sudo-Vire is strictly prohibited). See [LICENSE](LICENSE).
