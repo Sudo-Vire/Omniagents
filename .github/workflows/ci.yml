@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Legal files are identical in the root and in skill/
+        run: python scripts/sync_legal.py --check
+      - name: Unit tests
+        run: python -B -m unittest discover -s skill/tests -p "test_*.py" -v
+      - name: Preflight
+        run: python -B skill/scripts/check_dependencies.py
+
+  install:
+    name: Install with npx skills
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the skill into a clean project
+        shell: bash
+        run: |
+          mkdir project
+          cd project
+          npx --yes skills add "$GITHUB_WORKSPACE/source" --skill omniagents-orchestration -a claude-code --copy -y
+          test -f .claude/skills/omniagents-orchestration/SKILL.md
+      - name: Installed copy has the legal files and the whole framework
+        shell: bash
+        run: |
+          cd project/.claude/skills/omniagents-orchestration
+          for f in LICENSE NOTICE AUTHORS.md CONTRIBUTING.md framework/orchestration/get_actualization.py framework/actualization/update_ecosystem.py dependencies/utils/check_utils.txt; do
+            test -f "$f" || { echo "missing in installed skill: $f"; exit 1; }
+          done
+      - name: Preflight and tests from the installed location
+        shell: bash
+        run: |
+          cd project/.claude/skills/omniagents-orchestration
+          python -B scripts/check_dependencies.py --skip-mcp-check
+          python -B -m unittest discover -s tests -p "test_*.py"

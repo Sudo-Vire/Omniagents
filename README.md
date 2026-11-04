@@ -1,74 +1,91 @@
-﻿# OmniAgent — Universal AI Agent & Multi-Model Orchestration Ecosystem
+# Omniagents
 
-**OmniAgent** is a production-grade operating system and framework for orchestrating advanced AI agents, micro-subagents, specialized security and knowledge graph skills, automation tools, and local/cloud LLM gateways (**Claude, Copilot, Gemini, OpenAI, and Omniroute**).
+Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, skills and tools. It works from any install location and does not require VS Code, Claude or any specific editor. Delegation uses the native tools of whichever agent host loads it.
 
----
-
-## 📂 Project Structure (4 Core Modules)
+## Repository layout
 
 ```text
-OmniAgent/
-├── installation/            # [Independent Module] Autonomous installers downloading tools from official sources
-│   ├── install.py           # Python prerequisite & environment setup wizard
-│   ├── install.ps1          # PowerShell setup wizard
-│   ├── requirements.txt     # Official PyPI dependency manifest
-│   ├── Makefile             # Shortcut commands
-│   └── .env.example         # Environment variables template
-├── pre-downloaded/          # [Independent Module] Standalone pre-downloaded ecosystem assets
-│   ├── agents/              # Macro agents (agency-agents) & micro-subagents (claude-subagents)
-│   ├── skills/              # Pre-downloaded skills (Strix, Graphify, Karpathy, UI/UX, Vercel, etc.)
-│   └── tools/               # Automation scripts & MCP servers (mcp-sequential-thinking, etc.)
-├── orchestration/           # [Independent Module] Multi-agent orchestration rules and model instructions
-│   ├── instructions/        # Model-specific instructions (claude/, copilot/, gemini/sub-rules/, openai/sub-rules/, others/)
-│   └── docs/                # Ecosystem guides & tooling validation
-└── actualization/           # [Independent Module] AI-powered ecosystem updaters & cross-model synchronization
-    ├── update_ecosystem.py  # Interactive assistant to add agents, tools, skills, or MCPs with AI-generated docs
-    └── update_model_instructions.py # AI-verified cross-model instruction synchronizer
+.
+├── skill/                      # The installable package (copy this whole folder)
+│   ├── SKILL.md                # Entry point and procedure
+│   ├── AUTHORS.md, CONTRIBUTING.md, LICENSE, NOTICE   # Copies that travel with the skill
+│   ├── framework/
+│   │   ├── orchestration/      # Per-model instructions (claude, copilot, gemini, openai, others)
+│   │   └── actualization/      # Ecosystem and model-sync update tooling
+│   ├── dependencies/
+│   │   ├── installation/       # Optional Python environment setup
+│   │   └── utils/              # Agents, skills, tools, inventory and upstream sources
+│   │       ├── check_utils.txt # Inventory verified by the preflight
+│   │       └── sources.json    # Pinned upstream repositories for downloaded utilities
+│   ├── references/             # Execution contract, configuration, troubleshooting
+│   ├── scripts/                # check_dependencies.py, check_mcp.py, fetch_utils.py
+│   └── tests/                  # Package tests
+├── .github/workflows/          # ci.yml (tests, preflight, npx install test), verify-sources.yml
+├── scripts/sync_legal.py       # Keeps the legal files identical in the root and in skill/
+├── AUTHORS.md, CONTRIBUTING.md, LICENSE, NOTICE   # Same files as in skill/ (GitHub detects these)
+└── README.md
 ```
 
----
+## Install
 
-## 🧠 Orchestration Module (`orchestration/`)
-Tailored multi-agent instruction frameworks optimized for each LLM runtime:
-- **GitHub Copilot**: `orchestration/instructions/copilot/copilot-instructions.md`
-- **Claude (Anthropic)**: `orchestration/instructions/claude/CLAUDE.md`
-- **Google Gemini**: `orchestration/instructions/gemini/GEMINI.md` (with Context Caching & modular `sub-rules/`)
-- **OpenAI / GPT**: `orchestration/instructions/openai/OPENAI.md` & `assistant-instructions.json` (with Assistants API support)
+Without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills) (Node.js 22.20+):
 
----
-
-## 🔄 AI-Powered Ecosystem Updating & Actualization (`actualization/`)
-OmniAgent includes autonomous tools to expand the ecosystem and synchronize instructions across models:
-- **Add Resources**: Run `python actualization/update_ecosystem.py` to interactively add agents, MCP servers, skills, or sub-rules. The system uses the local Omniroute AI gateway to generate rich, context-aware integration documentation automatically.
-- **Sync Instructions**: Run `python actualization/update_model_instructions.py` to verify and align multi-model instructions.
-
----
-
-## ⚙️ Autonomous Installation
-
-### System Requirements
-- **Python**: Version 3.10 or higher.
-- **Git**: For repository updates.
-- **Rust / Cargo**: Recommended for high-performance extensions.
-
-### Installation Commands
 ```bash
-git clone https://github.com/Sudo-Vire/Omniagents.git OmniAgent
-cd OmniAgent/installation
+# Current project; the CLI asks which agents to install to
+npx skills add Sudo-Vire/Omniagents --skill omniagents-orchestration
 
-# Cross-platform Python installer
-python install.py
-
-# Or Windows PowerShell installer
-.\install.ps1
+# For all your projects, one agent, no prompts, real copies instead of symlinks
+npx skills add Sudo-Vire/Omniagents --skill omniagents-orchestration -g -a claude-code --copy -y
 ```
 
----
+The CLI installs the complete `skill/` folder, including `dependencies/utils/`. Update with `npx skills update`. Set `DISABLE_TELEMETRY=1` to opt out of the CLI's anonymous telemetry.
 
-## 📜 Authorship & Copyright Attribution
-Please refer to [AUTHORS.md](AUTHORS.md) and [NOTICE](NOTICE) for explicit copyright attribution to upstream creators for Strix, Graphify, Agency Agents, Claude Subagents, and Andrej Karpathy Skills.
+Alternatively, everything is versioned in this repository, so cloning or downloading it also includes all utilities:
 
----
+```text
+git clone https://github.com/Sudo-Vire/Omniagents.git
+```
 
-## 📄 License
-Licensed under the **Non-Commercial Software License Agreement** (Commercialization without explicit written permission from Sudo-Vire is strictly prohibited). See [LICENSE](LICENSE).
+Copy the whole `skill/` folder to the skill location your host uses, keeping its structure. If the host requires the directory name to match `name` in `SKILL.md`, name it `omniagents-orchestration` (Claude Code: `.claude/skills/omniagents-orchestration/` in a project or `~/.claude/skills/omniagents-orchestration/` for user scope). Do not copy local runtime folders such as `dependencies/installation/.venv/` or Python caches.
+
+Then, from any directory:
+
+```text
+python <skill-root>/scripts/check_dependencies.py
+```
+
+If a downloaded utility is missing (for example, a partial copy), restore it from its pinned upstream source:
+
+```text
+python <skill-root>/scripts/fetch_utils.py
+```
+
+This downloads `agents/claude-subagents` ([VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)) and `skills/superpowers` ([obra/superpowers](https://github.com/obra/superpowers)) at the commits pinned in `skill/dependencies/utils/sources.json`. It uses only the Python standard library and never executes downloaded content. Use `--force` to re-download.
+
+### Sequential Thinking MCP (optional)
+
+Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
+
+## Validate
+
+Run with Python 3.10 or later:
+
+```text
+python -B -m unittest discover -s skill/tests -p "test_*.py" -v
+python -B skill/scripts/check_dependencies.py
+```
+
+The preflight is read-only. It does not install or download anything.
+
+## Optional dependency setup
+
+The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+
+```text
+cd skill/dependencies/installation
+python install.py
+```
+
+## License
+
+See [AUTHORS.md](AUTHORS.md), [NOTICE](NOTICE) and [LICENSE](LICENSE). Third-party utilities keep their own licenses inside their folders.

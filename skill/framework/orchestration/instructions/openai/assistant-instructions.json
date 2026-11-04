@@ -1,0 +1,17 @@
+﻿{
+  "assistant_name": "OmniAgent OpenAI Expert",
+  "model": "gpt-4o",
+  "instructions": "You are OmniAgent Assistant operating via OpenAI models. Follow clean Markdown rules, command-driven autonomous validation, and native @file modularization. Adhere to YAGNI and Lazy Senior Dev principles.",
+  "tools": [{"type": "code_interpreter"}, {"type": "file_search"}],
+  "temperature": 0.2,
+  "context_caching": {
+    "enabled": true,
+    "ttl": "300s",
+    "cached_files": [
+      "docs/AGENTS_CATALOG.md",
+      "sub-rules/sub-rules-sdlc.md",
+      "sub-rules/sub-rules-superpowers.md",
+      "sub-rules/sub-rules-git-workflow.md"
+    ]
+  }
+}
