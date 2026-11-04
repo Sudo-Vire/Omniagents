@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Download upstream utilities listed in dependencies/utils/sources.json.
+"""Download upstream utilities listed in dependencies/utils/sources.json
+(pinned to commit SHAs) and sources_not_pinned.json (following a branch).
 
 Standard library only. Utilities that already have real content are skipped
-unless --force is given. Downloads are pinned to commit SHAs and extracted
-without executing anything.
+unless --force is given. Archives are extracted without executing anything.
+A source may set `path` (extract one upstream folder at the root) or `map`
+({upstream path: destination}) when the upstream layout differs from the one
+used under dependencies/utils/.
 """
 
 from __future__ import annotations
@@ -20,6 +23,7 @@ from pathlib import Path, PurePosixPath
 
 PLACEHOLDER_MARKER = "PLACEHOLDER.md"
 SOURCES = Path("dependencies/utils/sources.json")
+SOURCES_NOT_PINNED = Path("dependencies/utils/sources_not_pinned.json")
 ARCHIVE_URL = "https://codeload.github.com/{repo}/zip/{ref}"
 
 
@@ -28,6 +32,19 @@ def find_skill_root(start: Path) -> Path | None:
         if (candidate / SOURCES).is_file():
             return candidate
     return None
+
+
+def load_sources(skill_root: Path) -> dict[str, dict]:
+    """Merge pinned (sources.json) and unpinned (sources_not_pinned.json) sources."""
+    sources: dict[str, dict] = {}
+    for path, unpinned in ((SOURCES, False), (SOURCES_NOT_PINNED, True)):
+        file = skill_root / path
+        if not file.is_file():
+            continue
+        for key, value in json.loads(file.read_text(encoding="utf-8")).items():
+            if not key.startswith("_"):
+                sources[key] = {**value, "unpinned": unpinned}
+    return sources
 
 
 def is_installed(path: Path) -> bool:
@@ -40,21 +57,39 @@ def is_installed(path: Path) -> bool:
     return any(p.stat().st_size > 0 for p in files)
 
 
-def safe_extract(archive: zipfile.ZipFile, target: Path, subpath: str = "") -> int:
+def safe_extract(
+    archive: zipfile.ZipFile,
+    target: Path,
+    subpath: str = "",
+    mapping: dict[str, str] | None = None,
+) -> int:
     """Extract an archive, dropping its top-level folder and rejecting escapes.
 
     With subpath, only that folder of the repository is extracted, at the target root.
+    With mapping ({upstream path: destination relative to target}), each upstream file
+    or folder is placed at its destination and everything else is skipped.
     """
     count = 0
     target = target.resolve()
     prefix = PurePosixPath(subpath).parts if subpath else ()
+    rules = [
+        (PurePosixPath(src).parts, PurePosixPath(dst).parts)
+        for src, dst in (mapping or {}).items()
+    ]
     for info in archive.infolist():
         parts = PurePosixPath(info.filename).parts[1:]
         if not parts or info.is_dir():
             continue
         if any(part in ("..", "") for part in parts) or PurePosixPath(*parts).is_absolute():
             raise ValueError(f"Unsafe path in archive: {info.filename}")
-        if prefix:
+        if rules:
+            for src, dst in rules:
+                if parts[: len(src)] == src:
+                    parts = (*dst, *parts[len(src):])
+                    break
+            else:
+                continue
+        elif prefix:
             if parts[: len(prefix)] != prefix or len(parts) == len(prefix):
                 continue
             parts = parts[len(prefix):]
@@ -73,7 +108,8 @@ def fetch(skill_root: Path, key: str, source: dict, force: bool) -> bool:
         print(f"OK      {key}: already downloaded")
         return True
     url = ARCHIVE_URL.format(repo=source["repo"], ref=source["ref"])
-    print(f"FETCH   {key}: {url}")
+    note = " (unpinned: follows the upstream branch)" if source.get("unpinned") else ""
+    print(f"FETCH   {key}: {url}{note}")
     try:
         with urllib.request.urlopen(url, timeout=60) as response:
             data = response.read()
@@ -84,7 +120,7 @@ def fetch(skill_root: Path, key: str, source: dict, force: bool) -> bool:
     with tempfile.TemporaryDirectory() as tmp:
         staged = Path(tmp) / "staged"
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
-            count = safe_extract(archive, staged, source.get("path", ""))
+            count = safe_extract(archive, staged, source.get("path", ""), source.get("map"))
         if count == 0:
             print(f"ERROR   {key}: archive was empty", file=sys.stderr)
             return False
@@ -126,11 +162,7 @@ def main(argv: list[str] | None = None) -> int:
         print("ERROR: skill root not found (missing dependencies/utils/sources.json).", file=sys.stderr)
         return 2
 
-    sources = {
-        key: value
-        for key, value in json.loads((skill_root / SOURCES).read_text(encoding="utf-8")).items()
-        if not key.startswith("_")
-    }
+    sources = load_sources(skill_root)
     selected = {k: v for k, v in sources.items() if not args.only or k in args.only}
     if args.verify:
         return 0 if all([verify(key, value) for key, value in selected.items()]) else 1

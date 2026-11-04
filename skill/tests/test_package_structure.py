@@ -18,6 +18,8 @@ import update_model_instructions  # noqa: E402
 class PackageStructureTests(unittest.TestCase):
     def test_macro_agent_text_references_exist(self) -> None:
         agents = SKILL_DIR / "dependencies" / "utils" / "agents" / "agency-agents"
+        if (agents / "PLACEHOLDER.md").is_file():
+            self.skipTest("agency-agents is not downloaded in this copy (fetch_utils.py restores it)")
         pattern = re.compile(r"`([a-z0-9-]+/[A-Za-z0-9_.-]+\.md)`")
         missing = []
         checked = 0

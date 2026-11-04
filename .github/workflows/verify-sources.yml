@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - skill/dependencies/utils/sources.json
+      - skill/dependencies/utils/sources_not_pinned.json
 
 jobs:
   verify:

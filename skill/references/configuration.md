@@ -5,10 +5,11 @@
 | Path | Role |
 |---|---|
 | `framework/orchestration/` | Host-specific instruction files, catalogs, and orchestration guidance |
-| `dependencies/utils/agents/agency-agents/` | Downloaded macro-agent prompt collection |
-| `dependencies/utils/agents/claude-subagents/` | Downloaded Claude subagent prompt collection (VoltAgent, pinned in `sources.json`) |
-| `dependencies/utils/skills/superpowers/` | Downloaded Superpowers skills (obra, pinned in `sources.json`) |
-| `dependencies/utils/sources.json` | Pinned upstream commits (optional `path` for monorepo subfolders) restorable with `scripts/fetch_utils.py`; modified utilities are not pinned |
+| `dependencies/utils/agents/agency-agents/` | Macro-agent prompt collection. Not committed on `master-no-dependencies`: download it with `scripts/fetch_utils.py` (`sources_not_pinned.json`, follows upstream `main`) |
+| `dependencies/utils/agents/claude-subagents/` | Claude subagent prompt collection (VoltAgent). Not committed: download it with `scripts/fetch_utils.py` (pinned in `sources.json`) |
+| `dependencies/utils/skills/superpowers/` | Superpowers skills (obra). Not committed: download it with `scripts/fetch_utils.py` (pinned in `sources.json`) |
+| `dependencies/utils/sources.json` | Pinned upstream commits (optional `path` for monorepo subfolders) restorable with `scripts/fetch_utils.py` |
+| `dependencies/utils/sources_not_pinned.json` | Upstream branches read by the same script (optional `path` or `map` when the upstream layout differs); downloads can differ from what was tested |
 | `dependencies/utils/skills/ciberseguridad/` | Downloaded cybersecurity and penetration-testing skills |
 | `dependencies/utils/skills/vercel/` | Downloaded Vercel-related skills |
 | `dependencies/utils/tools/` | Downloaded tool scripts |
