@@ -39,10 +39,10 @@ Without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills)
 
 ```bash
 # Current project; the CLI asks which agents to install to
-npx skills add Sudo-Vire/Omniagents --skill omniagents-orchestration
+npx skills add Sudo-Vire/Omniagents 
 
 # For all your projects, one agent, no prompts, real copies instead of symlinks
-npx skills add Sudo-Vire/Omniagents --skill omniagents-orchestration -g -a claude-code --copy -y
+npx skills add Sudo-Vire/Omniagents -g -a claude-code --copy -y
 ```
 
 The CLI installs the complete `skill/` folder, including `dependencies/utils/`. Update with `npx skills update`. Set `DISABLE_TELEMETRY=1` to opt out of the CLI's anonymous telemetry.
