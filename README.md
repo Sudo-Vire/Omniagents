@@ -40,10 +40,10 @@ Without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills)
 
 ```bash
 # This branch (the CLI accepts a GitHub URL with a branch)
-npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies --skill omniagents-orchestration
+npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies
 
 # For all your projects, one agent, no prompts, real copies instead of symlinks
-npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies --skill omniagents-orchestration -g -a claude-code --copy -y
+npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies -g -a claude-code --copy -y
 ```
 
 The CLI installs the complete `skill/` folder, but the third-party utilities are only placeholders until you run `fetch_utils.py` once after installing. Update with `npx skills update`. Set `DISABLE_TELEMETRY=1` to opt out of the CLI's anonymous telemetry.
