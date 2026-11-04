@@ -2,13 +2,6 @@
 
 Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, skills and tools. It works from any install location and does not require VS Code, Claude or any specific editor. Delegation uses the native tools of whichever agent host loads it.
 
-> **Clean install without dependencies.** This branch (`master`) includes the third-party agents and skills already downloaded under `skill/dependencies/utils/` (about 1,300 files). The [`master-no-dependencies`](https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies) branch is the same skill without them: those folders only hold a `PLACEHOLDER.md`, and `scripts/fetch_utils.py` downloads them into `utils/` on demand. To install it:
->
-> ```bash
-> npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies --skill omniagents-orchestration
-> python <skill-root>/scripts/fetch_utils.py
-> ```
-
 ## Repository layout
 
 ```text
@@ -72,6 +65,20 @@ This downloads `agents/claude-subagents` ([VoltAgent/awesome-claude-code-subagen
 ### Sequential Thinking MCP (optional)
 
 Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
+
+## Clean install
+
+This branch (`master`) already includes the third-party agents and skills under `skill/dependencies/utils/` (about 1,300 files). If you prefer a download **without those bundled dependencies**, use the [`master-no-dependencies`](https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies) branch. It is the same skill, but the third-party folders only contain a `PLACEHOLDER.md`, and you fetch the real content on demand with `scripts/fetch_utils.py`, which gives you a clean installation.
+
+Keep in mind:
+
+- It is **not guaranteed to be as stable as `master`**. If new components have been added that this branch did not account for, the clean install may not behave the same.
+- If the changes included in that branch work well for you, it is a valid way to install Omniagents.
+
+```bash
+npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies --skill omniagents-orchestration
+python <skill-root>/scripts/fetch_utils.py
+```
 
 ## Validate
 
