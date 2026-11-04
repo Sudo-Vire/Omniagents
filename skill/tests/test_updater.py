@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import redirect_stdout
-from io import StringIO
+from io import BytesIO, StringIO, TextIOWrapper
 import json
 import tempfile
 import unittest
@@ -80,7 +80,10 @@ class UpdaterTests(unittest.TestCase):
             skill_root = Path(temp_dir)
             utils_dir = skill_root / "dependencies" / "utils"
             index_path = utils_dir / "check_utils.txt"
+            stdout_buffer = BytesIO()
+            windows_stdout = TextIOWrapper(stdout_buffer, encoding="cp1252")
             with (
+                redirect_stdout(windows_stdout),
                 patch.object(update_ecosystem, "UTILS_DIR", str(utils_dir)),
                 patch.object(update_ecosystem, "UTILS_INDEX_PATH", str(index_path)),
                 patch.object(update_ecosystem, "SKILL_ROOT", str(skill_root)),
@@ -90,7 +93,10 @@ class UpdaterTests(unittest.TestCase):
                 patch("builtins.input", side_effect=["3", "new-tool", ""]),
             ):
                 update_ecosystem.main()
+            windows_stdout.flush()
+            output = stdout_buffer.getvalue().decode("cp1252")
 
+            self.assertIn("OK: El Herramienta/MCP 'new-tool'", output)
             self.assertTrue((utils_dir / "tools" / "new-tool").is_dir())
             self.assertEqual(
                 index_path.read_text(encoding="utf-8"),

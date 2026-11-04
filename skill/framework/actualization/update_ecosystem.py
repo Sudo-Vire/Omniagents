@@ -222,27 +222,27 @@ def main():
     }
     
     if choice not in types_map:
-        print("❌ Opción inválida. Saliendo.")
+        print("ERROR: Opción inválida. Saliendo.")
         sys.exit(1)
         
     resource_type, target_dir, utils_category = types_map[choice]
     
     name = input(f"\nIntroduce el nombre/identificador del {resource_type} (ej. 'mcp-sequential-thinking'): ").strip()
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", name):
-        print("❌ El identificador debe usar solo letras, números, puntos, guiones o guiones bajos.")
+        print("ERROR: El identificador debe usar solo letras, números, puntos, guiones o guiones bajos.")
         sys.exit(1)
         
     resource_path = os.path.join(target_dir, name)
     exists = os.path.exists(resource_path)
     
     if exists:
-        print(f"\n⚠️ [AVISO] El {resource_type} '{name}' YA EXISTE en '{resource_path}'.")
+        print(f"\n[AVISO] El {resource_type} '{name}' YA EXISTE en '{resource_path}'.")
         proceed = input("¿Deseas actualizarlo y re-ejecutar su instalación? (s/N): ").strip().lower()
         if proceed != 's':
             print("Operación cancelada por el usuario.")
             sys.exit(0)
     else:
-        print(f"\n✅ El {resource_type} '{name}' no existe previamente. Creando directorio...")
+        print(f"\nOK: El {resource_type} '{name}' no existe previamente. Creando directorio...")
         os.makedirs(resource_path, exist_ok=True)
 
     if utils_category:
@@ -257,7 +257,7 @@ def main():
     run_installation_script(resource_path)
     
     print(
-        f"\n✨ '{name}' quedó registrado. Comprueba que sus archivos se hayan "
+        f"\n'{name}' quedó registrado. Comprueba que sus archivos se hayan "
         "descargado o instalado y vuelve a ejecutar check_dependencies.py."
     )
 
