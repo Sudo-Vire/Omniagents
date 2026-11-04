@@ -1,13 +1,34 @@
-OmniAgent
-Copyright (c) 2026 Sudo-Vire and Contributors
+Omniagents
+Copyright (c) Sudo-Vire
 
-This product includes software, agents, skills, and prompt architectures developed by the open-source community and respective authors:
+The original work in this repository (the orchestration framework, scripts,
+tests and documentation) is licensed under the terms in LICENSE.
 
-1. **Agency Agents Catalog** — Agency Agents Open Source Contributors
-2. **Claude Subagents** — Anthropic Claude Ecosystem Community
-3. **Andrej Karpathy Skills** — Andrej Karpathy & Contributors
-4. **Superpowers & Plugins** — Superpowers Open Source Contributors
-5. **Strix Security Framework** — Strix Security Team & Maintainers
-6. **Graphify Knowledge Graph** — Graphify Contributors
-7. **UI/UX Pro Max & Vercel Best Practices** — UI/UX and Vercel Engineering Communities
-8. **GitHub Copilot SDK & Google Gemini / OpenAI Runtimes** — Google DeepMind, GitHub, Google, and OpenAI
+THIRD-PARTY CONTENT
+-------------------
+The folder skill/dependencies/utils/ contains or downloads content from other
+projects. That content is NOT covered by LICENSE: each component keeps its own
+license (MIT or Apache-2.0), and the upstream LICENSE file is kept inside the
+component's folder when upstream provides one.
+
+The full list, with upstream repository, license and content check, is in:
+
+    skill/dependencies/utils/THIRD_PARTY.md
+
+Components:
+  - msitarzewski/agency-agents (MIT)
+  - VoltAgent/awesome-claude-code-subagents (MIT, downloaded)
+  - obra/superpowers (MIT, downloaded)
+  - forrestchang/andrej-karpathy-skills (MIT, declared in the skill)
+  - vercel-labs/skills (MIT)
+  - vercel-labs/agent-skills (MIT, declared in its README)
+  - mattpocock/skills (MIT)
+  - safishamsi/graphify (Apache-2.0)
+  - gsd-build/get-shit-done (MIT)
+  - nextlevelbuilder/ui-ux-pro-max-skill (MIT)
+  - usestrix/strix (Apache-2.0)
+  - modelcontextprotocol/servers: Sequential Thinking MCP, installed from npm
+    on demand and not redistributed here.
+
+Some vendored skills differ from their current upstream version. See
+THIRD_PARTY.md. Trademarks belong to their respective owners.

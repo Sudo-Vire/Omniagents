@@ -1,0 +1,32 @@
+# One installed utility per line, relative to this directory.
+# Supported categories: agents, skills, tools.
+agents/agency-agents
+agents/claude-subagents
+skills/andrej-karpathy-skills
+skills/ciberseguridad/api-security-testing
+skills/ciberseguridad/application-security-testing
+skills/ciberseguridad/ci-security-scanning-with-strix
+skills/ciberseguridad/find-security-vulnerabilities-in-code
+skills/ciberseguridad/fix-security-vulnerabilities-with-strix
+skills/ciberseguridad/managed-pentesting-with-strix
+skills/ciberseguridad/owasp-top-10-testing
+skills/ciberseguridad/penetration-testing-with-strix
+skills/ciberseguridad/web-app-penetration-testing
+skills/find-skills
+skills/graphify
+skills/grill-me
+skills/gsd
+skills/superpowers
+skills/ui-ux-pro-max
+skills/vercel/deploy-to-vercel
+skills/vercel/vercel-cli-with-tokens
+skills/vercel/vercel-composition-patterns
+skills/vercel/vercel-optimize
+skills/vercel/vercel-react-best-practices
+skills/vercel/vercel-react-native-skills
+skills/vercel/vercel-react-view-transitions
+skills/web-design-guidelines
+skills/writing-guidelines
+tools/browser_agent.py
+tools/office.py
+tools/mcp-sequential-thinking

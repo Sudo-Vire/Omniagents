@@ -12,16 +12,29 @@ Thumbs.db
 temp/
 *.lock
 .skill-lock.json
+__pycache__/
+*.pyc
+.pytest_cache/
 
-# IDE and local configuration state
-.vscode/
-.idea/
-.claude/
-.copilot/
-.omniroute/
-.agents/
+# Local editor/agent state (root only: skill contents under skill/ must stay versioned)
+/.vscode/
+/.idea/
+/.claude/
+/.copilot/
+/.omniroute/
+/.agents/
+settings.local.json
+
+# Local configuration and secrets (install.py / install.ps1 write .env)
+.env
+.env.*
+!.env.example
+*.omniagents.bak
 
 # Virtual environments
 .venv/
 venv/
 env/
+
+# Local knowledge-graph output
+graphify-out/

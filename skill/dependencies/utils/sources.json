@@ -1,0 +1,54 @@
+{
+  "_comment": "Upstream sources for utilities that can be restored with scripts/fetch_utils.py. Keys are paths relative to dependencies/utils/. Refs are pinned commits; the optional 'path' is a subfolder of the upstream repository. Utilities modified locally (graphify, ui-ux-pro-max, deploy-to-vercel, the other vercel skills) and agents/agency-agents are NOT pinned: they must stay as vendored.",
+  "agents/claude-subagents": {
+    "repo": "VoltAgent/awesome-claude-code-subagents",
+    "ref": "ed74d115b7fb7026a22a4f816a8e3250f425e3b4",
+    "license": "MIT"
+  },
+  "skills/superpowers": {
+    "repo": "obra/superpowers",
+    "ref": "22f0b463e7a5e579904dd6211a520321035526f7",
+    "license": "MIT"
+  },
+  "skills/andrej-karpathy-skills": {
+    "repo": "forrestchang/andrej-karpathy-skills",
+    "ref": "2c606141936f1eeef17fa3043a72095b4765b9c2",
+    "license": "MIT"
+  },
+  "skills/find-skills": {
+    "repo": "vercel-labs/skills",
+    "ref": "9197d919034d19010ae303cf96bf19ad087dd4be",
+    "path": "skills/find-skills",
+    "license": "MIT"
+  },
+  "skills/grill-me": {
+    "repo": "mattpocock/skills",
+    "ref": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "path": "skills/productivity/grill-me",
+    "license": "MIT"
+  },
+  "skills/web-design-guidelines": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "path": "skills/web-design-guidelines",
+    "license": "MIT"
+  },
+  "skills/writing-guidelines": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "path": "skills/writing-guidelines",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-cli-with-tokens": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "path": "skills/vercel-cli-with-tokens",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-optimize": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "path": "skills/vercel-optimize",
+    "license": "MIT"
+  }
+}

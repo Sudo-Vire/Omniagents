@@ -1,0 +1,16 @@
+{
+  "model": "gemini-3.1-flash-lite",
+  "system_instruction": "You are OmniAgent Assistant. Follow clean Markdown rules, command-driven autonomous validation, and native @file modularization. Adhere to YAGNI and Lazy Senior Dev principles.",
+  "temperature": 1,
+  "max_output_tokens": 8192,
+  "context_caching": {
+    "enabled": true,
+    "ttl": "300s",
+    "cached_files": [
+      "docs/AGENTS_CATALOG.md",
+      "sub-rules/sub-rules-sdlc.md",
+      "sub-rules/sub-rules-superpowers.md",
+      "sub-rules/sub-rules-git-workflow.md"
+    ]
+  }
+}
