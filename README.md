@@ -62,10 +62,6 @@ python <skill-root>/scripts/fetch_utils.py
 
 This downloads `agents/claude-subagents` ([VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)) and `skills/superpowers` ([obra/superpowers](https://github.com/obra/superpowers)) at the commits pinned in `skill/dependencies/utils/sources.json`. It uses only the Python standard library and never executes downloaded content. Use `--force` to re-download.
 
-### Sequential Thinking MCP (optional)
-
-Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
-
 ## Clean install
 
 This branch (`master`) already includes the third-party agents and skills under `skill/dependencies/utils/` (about 1,300 files). If you prefer a download **without those bundled dependencies**, use the [`master-no-dependencies`](https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies) branch. It is the same skill, but the third-party folders only contain a `PLACEHOLDER.md`, and you fetch the real content on demand with `scripts/fetch_utils.py`, which gives you a clean installation.
@@ -74,6 +70,10 @@ Keep in mind:
 
 - It is **not guaranteed to be as stable as `master`**. If new components have been added that this branch did not account for, the clean install may not behave the same.
 - If the changes included in that branch work well for you, it is a valid way to install Omniagents.
+
+### Sequential Thinking MCP (optional)
+
+Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
 
 ## Optional dependency setup
 
