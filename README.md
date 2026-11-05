@@ -75,11 +75,6 @@ Keep in mind:
 - It is **not guaranteed to be as stable as `master`**. If new components have been added that this branch did not account for, the clean install may not behave the same.
 - If the changes included in that branch work well for you, it is a valid way to install Omniagents.
 
-```bash
-npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies --skill omniagents-orchestration
-python <skill-root>/scripts/fetch_utils.py
-```
-
 ## Validate
 
 Run with Python 3.10 or later:
