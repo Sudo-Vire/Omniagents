@@ -75,6 +75,15 @@ Keep in mind:
 - It is **not guaranteed to be as stable as `master`**. If new components have been added that this branch did not account for, the clean install may not behave the same.
 - If the changes included in that branch work well for you, it is a valid way to install Omniagents.
 
+## Optional dependency setup
+
+The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+
+```text
+cd skill/dependencies/installation
+python install.py
+```
+
 ## Validate
 
 Run with Python 3.10 or later:
@@ -85,15 +94,6 @@ python -B skill/scripts/check_dependencies.py
 ```
 
 The preflight is read-only. It does not install or download anything.
-
-## Optional dependency setup
-
-The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
-
-```text
-cd skill/dependencies/installation
-python install.py
-```
 
 ## License
 
