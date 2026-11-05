@@ -2,12 +2,14 @@
 
 Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, skills and tools. It works from any install location and does not require VS Code, Claude or any specific editor. Delegation uses the native tools of whichever agent host loads it.
 
-> **Branch `master-no-dependencies`.** This branch ships the skill **without the third-party agents and skills** (about 1,300 files). Their folders under `skill/dependencies/utils/` contain only a `PLACEHOLDER.md` (plus the upstream `LICENSE` when there is one), and they are downloaded on demand with `fetch_utils.py`:
->
-> - `sources.json`: 9 utilities pinned to a commit.
-> - `sources_not_pinned.json`: 18 utilities that follow an upstream branch (`agency-agents`, `graphify`, `gsd`, `ui-ux-pro-max`, the five other Vercel skills, the nine Strix security skills). `graphify` and `gsd` are copied from their repositories into `utils` with a path map, not installed with their own installers. Unpinned downloads can differ from what Omniagents was tested with.
->
-> Everything is installed in one step with `python <skill-root>/scripts/fetch_utils.py` (see [Install](#install)). The full copy with every utility included is the `master` branch.
+## Clean install
+
+This branch (`master-no-dependencies`) ships the skill **without the third-party agents and skills** (about 1,300 files). Their folders under `skill/dependencies/utils/` contain only a `PLACEHOLDER.md` (plus the upstream `LICENSE` when there is one), and they are downloaded on demand with `fetch_utils.py`:
+
+- `sources.json`: 9 utilities pinned to a commit.
+- `sources_not_pinned.json`: 18 utilities that follow an upstream branch (`agency-agents`, `graphify`, `gsd`, `ui-ux-pro-max`, the five other Vercel skills, the nine Strix security skills). `graphify` and `gsd` are copied from their repositories into `utils` with a path map, not installed with their own installers. Unpinned downloads can differ from what Omniagents was tested with.
+
+Everything is installed in one step with `python <skill-root>/scripts/fetch_utils.py` (see [Install](#install)).
 
 ## Repository layout
 
@@ -35,6 +37,8 @@ Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, sk
 ```
 
 ## Install
+
+> **Looking for the version with every utility included?** The [`master`](https://github.com/Sudo-Vire/Omniagents/tree/master) branch ships all third-party agents and skills already downloaded, so it is the more stable option. However, it may not cover new third-party agents or features added upstream after it was last updated; those are only picked up here when you run `fetch_utils.py`.
 
 Without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills) (Node.js 22.20+):
 
