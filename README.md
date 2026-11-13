@@ -81,13 +81,28 @@ python <skill-root>/scripts/fetch_utils.py
 
 This downloads every utility in `skill/dependencies/utils/sources.json` (9, pinned to commits) and `sources_not_pinned.json` (18, following the upstream branch) into `skill/dependencies/utils/`. Until a utility is restored, its folder holds only a `PLACEHOLDER.md` and the preflight warns about it. The script uses only the Python standard library and never executes downloaded content. Use `--force` to re-download, or name specific utilities (for example `skills/grill-me`) to fetch only those.
 
+## Clean install
+
+This branch (`master`) already includes the third-party agents and skills under `skill/dependencies/utils/` (about 1,300 files). If you prefer a download **without those bundled dependencies**, use the [`master-no-dependencies`](https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies) branch. It is the same skill, but the third-party folders only contain a `PLACEHOLDER.md`, and you fetch the real content on demand with `scripts/fetch_utils.py`, which gives you a clean installation.
+
+Keep in mind:
+
+- It is **not guaranteed to be as stable as `master`**. If new components have been added that this branch did not account for, the clean install may not behave the same.
+- If the changes included in that branch work well for you, it is a valid way to install Omniagents.
+
 ### Sequential Thinking MCP (optional)
 
 Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
 
-## Mandatory dependency setup
+<<<<<<< HEAD
+## Optional dependency setup
 
-The installer is required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+=======
+## Optional dependency setup
+
+The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+>>>>>>> master
 
 ```text
 cd skill/dependencies/installation
