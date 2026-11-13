@@ -2,7 +2,7 @@
 name: omniagents-orchestration
 description: Coordinate multi-agent work in the Omniagents repository by checking downloaded assets, loading the matching host instructions, selecting existing agents or skills, and synthesizing verified results. Use when a task genuinely benefits from independent agent work or the user explicitly requests orchestration.
 compatibility: Any host that can load Agent Skills. Delegation requires native host agent tools; no specific editor or executable orchestration runtime is required.
-license: Non-Commercial Software License Agreement (see LICENSE and NOTICE in this folder, https://github.com/Sudo-Vire/Omniagents)
+license: MIT (see LICENSE and NOTICE in this folder, https://github.com/Sudo-Vire/Omniagents)
 ---
 
 # Omniagents orchestration
@@ -20,6 +20,7 @@ Do not use it for a simple task, a single continuous trace across files, or when
 
 1. Run `python scripts/check_dependencies.py` from this skill directory. From anywhere else, run `python <skill-root>/scripts/check_dependencies.py`.
    - The preflight reads `dependencies/utils/check_utils.txt` and checks each listed agent, skill, and tool exists and is non-empty. It also reports populated resources missing from the inventory. This verifies the MCP integration files, not that the host connected to its server.
+   - It verifies that Python 3 is installed and available in the environment; if missing, it clearly reports the error and warns how to install Python before running scripts.
    - It then looks for a Sequential Thinking MCP entry in known host configuration files. If none is found it warns and, in an interactive terminal, asks the user to activate it manually (step-by-step report), automatically (merges the entry into the chosen host config after confirmation), or not at all. Non-interactively it only warns. Never choose for the user and never claim the MCP is active; run `python <skill-root>/scripts/check_mcp.py` (options: `--choice`, `--host`, `--probe`, `--report-file`) to repeat the flow. `--host-check` asks the `claude`/`codex` CLIs (`mcp list`) whether the server is connected; it cannot check VS Code or Claude Desktop, where the host's own MCP list and tool picker are the only confirmation.
    - If it exits with status `2`, report the entries and inspect `dependencies/utils/`. Do not run an installer or fetch assets unless the user approves.
    - If it succeeds, continue to `framework/orchestration/`.

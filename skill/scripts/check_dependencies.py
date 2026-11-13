@@ -159,6 +159,18 @@ def check_actualization(skill_root: Path) -> None:
         )
 
 
+def check_python_version() -> None:
+    """Verify Python version and availability."""
+    if sys.version_info < (3, 8):
+        print(
+            f"ERROR: Python 3.8+ is required, but found Python {sys.version.split()[0]}. "
+            "Please install Python 3.8 or higher before running Omniagents scripts.",
+            file=sys.stderr,
+        )
+    else:
+        print(f"Python check passed: Python {sys.version.split()[0]} is installed.")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Check downloaded agent, skill, and tool asset directories."
@@ -187,6 +199,8 @@ def main(argv: list[str] | None = None) -> int:
             file=sys.stderr,
         )
         return 2
+
+    check_python_version()
 
     errors = check_dependency_assets(skill_root)
     if errors:
