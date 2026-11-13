@@ -26,27 +26,46 @@ Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, sk
 └── README.md
 ```
 
-## Install
+## Clean install
 
-Without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills) (Node.js 22.20+):
+This branch (`master-no-dependencies`) ships the skill **without the third-party agents and skills** (about 1,300 files). Their folders under `skill/dependencies/utils/` contain only a `PLACEHOLDER.md` (plus the upstream `LICENSE` when there is one). The installation has two steps: download the skill, then download its dependencies.
+
+**1. Download the skill** (without cloning, using the [`skills` CLI](https://github.com/vercel-labs/skills), Node.js 22.20+):
 
 ```bash
 # Current project; the CLI asks which agents to install to
-npx skills add Sudo-Vire/Omniagents 
+npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies
 
 # For all your projects, one agent, no prompts, real copies instead of symlinks
-npx skills add Sudo-Vire/Omniagents -g -a claude-code --copy -y
+npx skills add https://github.com/Sudo-Vire/Omniagents/tree/master-no-dependencies -g -a claude-code --copy -y
 ```
 
-The CLI installs the complete `skill/` folder, including `dependencies/utils/`. Update with `npx skills update`. Set `DISABLE_TELEMETRY=1` to opt out of the CLI's anonymous telemetry.
+Or clone this branch: `git clone --branch master-no-dependencies https://github.com/Sudo-Vire/Omniagents.git`. Update with `npx skills update`. Set `DISABLE_TELEMETRY=1` to opt out of the CLI's anonymous telemetry.
 
-Alternatively, everything is versioned in this repository, so cloning or downloading it also includes all utilities:
+**2. Download its dependencies** in one step, from any directory:
 
 ```text
-git clone https://github.com/Sudo-Vire/Omniagents.git
+python <skill-root>/scripts/fetch_utils.py
 ```
 
-Copy the whole `skill/` folder to the skill location your host uses, keeping its structure. If the host requires the directory name to match `name` in `SKILL.md`, name it `omniagents-orchestration` (Claude Code: `.claude/skills/omniagents-orchestration/` in a project or `~/.claude/skills/omniagents-orchestration/` for user scope). Do not copy local runtime folders such as `dependencies/installation/.venv/` or Python caches.
+This downloads every utility listed in:
+
+- `sources.json`: 9 utilities pinned to a commit.
+- `sources_not_pinned.json`: 18 utilities that follow an upstream branch (`agency-agents`, `graphify`, `gsd`, `ui-ux-pro-max`, the five other Vercel skills, the nine Strix security skills). `graphify` and `gsd` are copied from their repositories into `utils` with a path map, not installed with their own installers. Unpinned downloads can differ from what Omniagents was tested with.
+
+Until a utility is restored, its folder holds only a `PLACEHOLDER.md` and the preflight warns about it. The script uses only the Python standard library and never executes downloaded content. Use `--force` to re-download, or name specific utilities (for example `skills/grill-me`) to fetch only those. Then continue with the [checks in Install](#install).
+
+## Install
+
+> **Prefer the full version?** The [`master`](https://github.com/Sudo-Vire/Omniagents/tree/master) branch already includes every third-party agent and skill under `skill/dependencies/utils/`, so nothing has to be downloaded afterwards. It is the more stable option, but a bundled copy may not cover third-party agents or features added upstream after it was last updated. This branch (`master-no-dependencies`) fetches them when you run `fetch_utils.py`. To install `master`:
+>
+> ```bash
+> npx skills add Sudo-Vire/Omniagents
+> ```
+
+The `Clean install` steps above (download the skill, then run `fetch_utils.py`) are the install path for this branch. After either install:
+
+Copy the whole `skill/` folder to the skill location your host uses, if you did not use the CLI, keeping its structure. If the host requires the directory name to match `name` in `SKILL.md`, name it `omniagents-orchestration` (Claude Code: `.claude/skills/omniagents-orchestration/` in a project or `~/.claude/skills/omniagents-orchestration/` for user scope). Do not copy local runtime folders such as `dependencies/installation/.venv/` or Python caches.
 
 Then, from any directory:
 
@@ -54,13 +73,13 @@ Then, from any directory:
 python <skill-root>/scripts/check_dependencies.py
 ```
 
-If a downloaded utility is missing (for example, a partial copy), restore it from its pinned upstream source:
+If a utility is missing or only a placeholder, restore it from its upstream source:
 
 ```text
 python <skill-root>/scripts/fetch_utils.py
 ```
 
-This downloads `agents/claude-subagents` ([VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)) and `skills/superpowers` ([obra/superpowers](https://github.com/obra/superpowers)) at the commits pinned in `skill/dependencies/utils/sources.json`. It uses only the Python standard library and never executes downloaded content. Use `--force` to re-download.
+This downloads every utility in `skill/dependencies/utils/sources.json` (9, pinned to commits) and `sources_not_pinned.json` (18, following the upstream branch) into `skill/dependencies/utils/`. Until a utility is restored, its folder holds only a `PLACEHOLDER.md` and the preflight warns about it. The script uses only the Python standard library and never executes downloaded content. Use `--force` to re-download, or name specific utilities (for example `skills/grill-me`) to fetch only those.
 
 ## Clean install
 
@@ -75,9 +94,15 @@ Keep in mind:
 
 Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
 
+<<<<<<< HEAD
 ## Optional dependency setup
 
 The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+=======
+## Optional dependency setup
+
+The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
+>>>>>>> master
 
 ```text
 cd skill/dependencies/installation

@@ -1,0 +1,120 @@
+{
+  "_comment": "Upstream sources that are NOT pinned to a commit. 'ref' is a branch, so a download gets whatever upstream has today and may differ from what Omniagents was tested with. 'path' extracts one upstream folder at the root of the utility; 'map' places upstream files or folders at the given destinations when the upstream layout differs. Pinned sources live in sources.json.",
+  "agents/agency-agents": {
+    "repo": "msitarzewski/agency-agents",
+    "ref": "main",
+    "license": "MIT"
+  },
+  "skills/graphify": {
+    "repo": "safishamsi/graphify",
+    "ref": "v8",
+    "map": {
+      "graphify/skill.md": "SKILL.md",
+      "graphify/skills/claude/references": "references",
+      "LICENSE": "LICENSE"
+    },
+    "license": "Apache-2.0"
+  },
+  "skills/gsd": {
+    "repo": "gsd-build/get-shit-done",
+    "ref": "main",
+    "map": {
+      "agents": "agents",
+      "commands/gsd": "commands",
+      "get-shit-done/references": "references",
+      "get-shit-done/workflows": "workflows",
+      "LICENSE": "LICENSE"
+    },
+    "license": "MIT"
+  },
+  "skills/ui-ux-pro-max": {
+    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "ref": "main",
+    "path": ".claude/skills/ui-ux-pro-max",
+    "license": "MIT"
+  },
+  "skills/vercel/deploy-to-vercel": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "main",
+    "path": "skills/deploy-to-vercel",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-composition-patterns": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "main",
+    "path": "skills/composition-patterns",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-react-best-practices": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "main",
+    "path": "skills/react-best-practices",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-react-native-skills": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "main",
+    "path": "skills/react-native-skills",
+    "license": "MIT"
+  },
+  "skills/vercel/vercel-react-view-transitions": {
+    "repo": "vercel-labs/agent-skills",
+    "ref": "main",
+    "path": "skills/react-view-transitions",
+    "license": "MIT"
+  },
+  "skills/ciberseguridad/api-security-testing": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/api-security-testing",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/application-security-testing": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/application-security-testing",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/ci-security-scanning-with-strix": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/ci-security-scanning-with-strix",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/find-security-vulnerabilities-in-code": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/find-security-vulnerabilities-in-code",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/fix-security-vulnerabilities-with-strix": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/fix-security-vulnerabilities-with-strix",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/managed-pentesting-with-strix": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/managed-pentesting-with-strix",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/owasp-top-10-testing": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/owasp-top-10-testing",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/penetration-testing-with-strix": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/penetration-testing-with-strix",
+    "license": "Apache-2.0"
+  },
+  "skills/ciberseguridad/web-app-penetration-testing": {
+    "repo": "usestrix/strix",
+    "ref": "main",
+    "path": "skills/web-app-penetration-testing",
+    "license": "Apache-2.0"
+  }
+}
