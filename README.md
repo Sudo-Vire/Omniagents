@@ -8,7 +8,6 @@ Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, sk
 .
 ├── skill/                      # The installable package (copy this whole folder)
 │   ├── SKILL.md                # Entry point and procedure
-│   ├── AUTHORS.md, CONTRIBUTING.md, LICENSE, NOTICE   # Copies that travel with the skill
 │   ├── framework/
 │   │   ├── orchestration/      # Per-model instructions (claude, copilot, gemini, openai, others)
 │   │   └── actualization/      # Ecosystem and model-sync update tooling
@@ -21,8 +20,7 @@ Omniagents is a host-neutral Agent Skill (`skill/`) that orchestrates agents, sk
 │   ├── scripts/                # check_dependencies.py, check_mcp.py, fetch_utils.py
 │   └── tests/                  # Package tests
 ├── .github/workflows/          # ci.yml (tests, preflight, npx install test), verify-sources.yml
-├── scripts/sync_legal.py       # Keeps the legal files identical in the root and in skill/
-├── AUTHORS.md, CONTRIBUTING.md, LICENSE, NOTICE   # Same files as in skill/ (GitHub detects these)
+├── AUTHORS.md, CONTRIBUTING.md, LICENSE, NOTICE   # Project metadata and legal terms (GitHub detects these)
 └── README.md
 ```
 

@@ -2,12 +2,24 @@
 name: omniagents-orchestration
 description: Coordinate multi-agent work in the Omniagents repository by checking downloaded assets, loading the matching host instructions, selecting existing agents or skills, and synthesizing verified results. Use when a task genuinely benefits from independent agent work or the user explicitly requests orchestration.
 compatibility: Any host that can load Agent Skills. Delegation requires native host agent tools; no specific editor or executable orchestration runtime is required.
-license: MIT (see LICENSE and NOTICE in this folder, https://github.com/Sudo-Vire/Omniagents)
+license: MIT (see LICENSE and NOTICE, https://github.com/Sudo-Vire/Omniagents)
 ---
 
 # Omniagents orchestration
 
-Use the repository's orchestration instructions and downloaded resources without treating prompt files as executable agents. The skill is procedural: it does not start CrewAI, Aider, Omniroute, or another runtime.
+Use the repository's orchestration instructions and downloaded resources to coordinate multi-agent workflows. The skill supports three operational modes depending on host capabilities and user choice:
+
+1. **Declarative / Procedural Mode**: For hosts that only execute text directives via native host agent tools (such as Claude Code or Copilot chat) without launching a local Python orchestration process.
+2. **LangGraph Runtime Mode (`framework/runtime/`)**: For deterministic, observable multi-agent graph execution with LangChain (>=0.3.0), LangGraph (>=0.2.0), and LangSmith (>=0.1.0). Provides a typed `AgentState`, dependency preflight, complexity-based conditional branching, sequential thinking, dual catalog routing (`agency-agents` + `claude-subagents`), human-in-the-loop approval gate with checkpointing, self-correcting validation loops (linters with up to 3 retries), and structured execution contract outputs.
+3. **CrewAI Mode**: Maintained and active in the ecosystem for autonomous role-based agent collaboration via `dependencies/utils/tools/office.py --engine crewai`.
+
+## Execution modes overview
+
+| Operational Mode | Engine | Invocation | Primary Use Case |
+|---|---|---|---|
+| **Declarative / Procedural** | Host native tools | Conversational prompts | Hosts without local Python runtimes; interactive text delegation |
+| **LangGraph Runtime** | `langgraph` + `langsmith` | `python -m skill.framework.runtime.cli` or `dependencies/utils/tools/office.py --engine langgraph` | Deterministic graph routing, self-correction, HITL gates, observability |
+| **CrewAI** | `crewai` | `python dependencies/utils/tools/office.py --engine crewai` | Role-based autonomous collaboration across macro and tactical agents |
 
 ## Use this skill when
 

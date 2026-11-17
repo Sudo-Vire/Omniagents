@@ -16,8 +16,6 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Legal files are identical in the root and in skill/
-        run: python scripts/sync_legal.py --check
       - name: Unit tests
         run: python -B -m unittest discover -s skill/tests -p "test_*.py" -v
       - name: Preflight
@@ -48,11 +46,11 @@ jobs:
           cd project
           npx --yes skills add "$GITHUB_WORKSPACE/source" --skill omniagents-orchestration -a claude-code --copy -y
           test -f .claude/skills/omniagents-orchestration/SKILL.md
-      - name: Installed copy has the legal files and the whole framework
+      - name: Installed copy has the whole framework
         shell: bash
         run: |
           cd project/.claude/skills/omniagents-orchestration
-          for f in LICENSE NOTICE AUTHORS.md CONTRIBUTING.md framework/orchestration/get_actualization.py framework/actualization/update_ecosystem.py dependencies/utils/check_utils.txt; do
+          for f in framework/orchestration/get_actualization.py framework/actualization/update_ecosystem.py dependencies/utils/check_utils.txt; do
             test -f "$f" || { echo "missing in installed skill: $f"; exit 1; }
           done
       - name: Preflight and tests from the installed location

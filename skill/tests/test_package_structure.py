@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
 import json
 import re
 import tempfile
@@ -108,37 +107,11 @@ class PackageStructureTests(unittest.TestCase):
                 ).get("cached_files", []):
                     self.assertTrue((model_dir / cached).is_file(), f"{config.name} -> {cached}")
 
-    def test_sync_legal_script_detects_and_fixes_differences(self) -> None:
-        script = SKILL_DIR.parent / "scripts" / "sync_legal.py"
-        if not script.is_file():
-            self.skipTest("repository-level script not present in an installed skill")
-        spec = importlib.util.spec_from_file_location("sync_legal", script)
-        sync_legal = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(sync_legal)
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            (root / "skill").mkdir()
-            for name in sync_legal.FILES:
-                (root / name).write_text(f"{name}\n", encoding="utf-8")
-            self.assertEqual(len(sync_legal.out_of_sync(root)), 4)
-            self.assertEqual(sorted(sync_legal.sync(root)), sorted(sync_legal.FILES))
-            self.assertEqual(sync_legal.out_of_sync(root), [])
-            (root / "LICENSE").write_text("changed\n", encoding="utf-8")
-            self.assertEqual(len(sync_legal.out_of_sync(root)), 1)
-
-    def test_legal_files_travel_with_the_skill_and_match_the_repository_root(self) -> None:
-        for name in ("LICENSE", "NOTICE", "AUTHORS.md", "CONTRIBUTING.md"):
-            inside = SKILL_DIR / name
-            self.assertTrue(inside.is_file(), name)
-            root_copy = SKILL_DIR.parent / name
-            # The root copy only exists in the repository checkout, not in an installed skill.
-            if (SKILL_DIR.parent / ".git").exists() or root_copy.exists():
-                self.assertTrue(root_copy.is_file(), f"{name} missing in repository root")
-                self.assertEqual(
-                    inside.read_bytes().replace(b"\r\n", b"\n"),
-                    root_copy.read_bytes().replace(b"\r\n", b"\n"),
-                    f"{name} differs between skill/ and the repository root",
-                )
+    def test_repository_legal_files_exist(self) -> None:
+        root_dir = SKILL_DIR.parent
+        if (root_dir / ".git").exists():
+            for name in ("LICENSE", "NOTICE", "AUTHORS.md", "CONTRIBUTING.md"):
+                self.assertTrue((root_dir / name).is_file(), f"{name} missing in repository root")
 
     def test_referenced_markdown_files_exist(self) -> None:
         skill_text = (SKILL_DIR / "SKILL.md").read_text(encoding="utf-8")
