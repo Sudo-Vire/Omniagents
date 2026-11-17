@@ -33,7 +33,13 @@ Exit code `0` confirms the inventory matches the populated utility files and poi
 
 If preflight reports a missing utility, inspect `dependencies/utils/` and update `check_utils.txt` only when the inventory itself is wrong. The installer does not download missing agent/skill/tool collections. If Python packages are separately needed, inspect `dependencies/installation/`; its installer checks Python 3.10+, creates a virtual environment, installs the requirements, and offers gateway setup guidance. Do not run it without explicit user approval: it installs packages and may write `.env`.
 
-The procedural skill itself has no third-party Python dependency. The repository manifest lists `langchain-openai`, `browser-use`, `crewai`, `requests`, and `pydantic` for optional ecosystem scripts; their presence does not provide an orchestration entry point.
+The repository supports multiple operational modes:
+
+1. **Declarative / Procedural mode**: Operates directly with host-native delegation tools without requiring local execution dependencies.
+2. **LangGraph Runtime mode (`framework/runtime/`)**: Deterministic multi-agent state graph runtime using `langchain>=0.3.0`, `langgraph>=0.2.0`, `langsmith>=0.1.0`, `langchain-openai>=0.2.0`, and `pydantic>=2.7.0`. Provides complexity routing, sequential thinking, dual catalog agent selection, human approval gates with checkpointing, linter auto-correction loops, and LangSmith tracing (`LANGCHAIN_TRACING_V2="true"`). Invoke via `python -m skill.framework.runtime.cli` or `dependencies/utils/tools/office.py --engine langgraph`.
+3. **CrewAI mode**: Preserved and active for autonomous role-based collaboration, invoked via `dependencies/utils/tools/office.py --engine crewai`.
+
+The installer under `dependencies/installation/` provides dependency management for the runtime engines. It checks Python 3.10+, creates a virtual environment, installs requirements, and offers gateway setup guidance. Do not run it without explicit user approval.
 
 The Sequential Thinking MCP server is a separate Node.js utility. Its integration README pins `@modelcontextprotocol/server-sequential-thinking@2.0.0` and uses `npx`, which downloads/caches the package the first time a configured host launches it. Node.js 24+ and npm access are required. The skill inventory verifies only that the setup files exist; configure the server in each intended host and confirm that its `sequentialthinking` tool appears in the host's tool list before reporting it available. `scripts/check_mcp.py` warns when no host configuration is found and offers manual, automatic, or no activation with a step-by-step report (see the MCP README, "Automatic check").
 
@@ -41,9 +47,9 @@ Ready-to-copy MCP configurations ship inside the skill at `dependencies/utils/to
 
 ## Host and runtime
 
-The complete portable package is the `skill/` directory. Copy it to a skill location supported by the intended host; installation paths differ, so no host-specific location is assumed. For Claude Code, copy the complete directory to `.claude/skills/omniagents-orchestration/` in a project or `$HOME/.claude/skills/omniagents-orchestration/` for user scope. The package uses the Agent Skills `SKILL.md` format ([specification](https://agentskills.io/specification)); actual discovery and native delegation support must be verified with each host. Skill installation and MCP registration are separate steps.
+The complete portable package is the directory containing `SKILL.md`. Copy it to a skill location supported by the intended host; installation paths differ, so no host-specific location is assumed. For Claude Code, copy the complete directory to `.claude/skills/omniagents-orchestration/` in a project or `$HOME/.claude/skills/omniagents-orchestration/` for user scope. The package uses the Agent Skills `SKILL.md` format ([specification](https://agentskills.io/specification)); actual discovery and native delegation support must be verified with each host. Skill installation and MCP registration are separate steps.
 
-The inspected framework contains model instruction documents and ecosystem-update scripts, not a callable multi-agent runner. It does not provide enforced agent selection, concurrency, retries, timeout, cancellation, budget controls, or structured execution results. Use the host's native tools where available and describe any controls the host does not enforce.
+The framework supports both host-native delegation (declarative mode) and executable local orchestration (LangGraph and CrewAI runtimes). When using the LangGraph runtime, execution results strictly follow the structured outputs defined in [the execution contract](execution-contract.md).
 
 The local Omniroute endpoint documented by the framework is `http://localhost:20128/v1`. It is not required for this skill and must not be called unless the user requests it and the host has an appropriate authorized integration.
 

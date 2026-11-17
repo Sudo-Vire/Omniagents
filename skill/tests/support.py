@@ -11,9 +11,12 @@ MCP_ADAPTERS = (
 )
 
 for _path in (
+    SKILL_DIR.parent,
+    SKILL_DIR,
     SKILL_DIR / "scripts",
     SKILL_DIR / "framework" / "actualization",
     SKILL_DIR / "framework" / "orchestration",
+    SKILL_DIR / "framework" / "runtime",
 ):
     if str(_path) not in sys.path:
         sys.path.append(str(_path))

@@ -26,4 +26,4 @@ Thank you for your interest in contributing! We welcome new agents, skills, tool
    git push origin feature/amazing-agent
    ```
 
-`LICENSE`, `NOTICE`, `AUTHORS.md` and `CONTRIBUTING.md` exist twice on purpose: in the repository root so GitHub detects them, and in `skill/` so they travel with an installed skill. Edit the root copy and run `python scripts/sync_legal.py` to update the one in `skill/`; CI and a test fail if they differ.
+`LICENSE`, `NOTICE`, `AUTHORS.md` and `CONTRIBUTING.md` are located in the repository root so GitHub and community tools detect them.
