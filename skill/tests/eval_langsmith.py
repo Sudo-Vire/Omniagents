@@ -15,11 +15,19 @@ if str(_tests_dir) not in sys.path:
     sys.path.insert(0, str(_tests_dir))
 
 from support import SKILL_DIR  # noqa: E402
-from skill.framework.runtime.nodes import (
-    decision_tree_node,
-    dual_catalog_router_node,
-)
-from skill.framework.runtime.state import create_initial_state
+
+try:
+    from skill.framework.runtime.nodes import (
+        decision_tree_node,
+        dual_catalog_router_node,
+    )
+    from skill.framework.runtime.state import create_initial_state
+except ImportError:
+    from framework.runtime.nodes import (
+        decision_tree_node,
+        dual_catalog_router_node,
+    )
+    from framework.runtime.state import create_initial_state
 
 
 def load_activation_cases(skill_dir: Path) -> List[Dict[str, Any]]:

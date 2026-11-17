@@ -15,27 +15,52 @@ if str(_tests_dir) not in sys.path:
 
 from support import SKILL_DIR  # noqa: E402
 
-from skill.framework.runtime.state import AgentState, create_initial_state
-from skill.framework.runtime.nodes import (
-    TaskClassification,
-    preflight_node,
-    route_preflight,
-    decision_tree_node,
-    route_decision_tree,
-    sequential_thinking_node,
-    dual_catalog_router_node,
-    virtual_office_planner_node,
-    human_approval_gate,
-    route_human_approval,
-    executor_node,
-    validation_node,
-    route_validation,
-)
-from skill.framework.runtime.graph import (
-    build_runnable_config,
-    create_orchestrator_graph,
-    run_orchestration,
-)
+try:
+    from skill.framework.runtime.state import AgentState, create_initial_state
+    from skill.framework.runtime import nodes
+    from skill.framework.runtime.nodes import (
+        TaskClassification,
+        preflight_node,
+        route_preflight,
+        decision_tree_node,
+        route_decision_tree,
+        sequential_thinking_node,
+        dual_catalog_router_node,
+        virtual_office_planner_node,
+        human_approval_gate,
+        route_human_approval,
+        executor_node,
+        validation_node,
+        route_validation,
+    )
+    from skill.framework.runtime.graph import (
+        build_runnable_config,
+        create_orchestrator_graph,
+        run_orchestration,
+    )
+except ImportError:
+    from framework.runtime.state import AgentState, create_initial_state
+    from framework.runtime import nodes
+    from framework.runtime.nodes import (
+        TaskClassification,
+        preflight_node,
+        route_preflight,
+        decision_tree_node,
+        route_decision_tree,
+        sequential_thinking_node,
+        dual_catalog_router_node,
+        virtual_office_planner_node,
+        human_approval_gate,
+        route_human_approval,
+        executor_node,
+        validation_node,
+        route_validation,
+    )
+    from framework.runtime.graph import (
+        build_runnable_config,
+        create_orchestrator_graph,
+        run_orchestration,
+    )
 
 
 class FakeStructuredModel:
@@ -79,15 +104,16 @@ class TestRuntimeGraph(unittest.TestCase):
     def test_preflight_node_success_and_blocked(self) -> None:
         # 1. Success case
         state = create_initial_state("Standard task")
-        with patch("skill.framework.runtime.nodes.preflight_check", return_value={"success": True}):
+        with patch.object(nodes, "preflight_check", return_value={"success": True}):
             res = preflight_node(state)
             self.assertEqual(res["status"], "partial")
             state["status"] = res["status"]
             self.assertEqual(route_preflight(state), "ok")
 
         # 2. Blocked case (missing dependencies)
-        with patch(
-            "skill.framework.runtime.nodes.preflight_check",
+        with patch.object(
+            nodes,
+            "preflight_check",
             return_value={"success": False, "errors": ["Missing agents/agency-agents"]},
         ):
             res = preflight_node(state)
@@ -179,7 +205,7 @@ class TestRuntimeGraph(unittest.TestCase):
 
         # User rejected / cancelled
         state_rejected = create_initial_state("Task B")
-        with patch("skill.framework.runtime.nodes.interrupt", return_value=False):
+        with patch.object(nodes, "interrupt", return_value=False):
             res_rejected = human_approval_gate(state_rejected)
             self.assertFalse(res_rejected["human_approved"])
             self.assertEqual(res_rejected["status"], "cancelled")
@@ -217,8 +243,8 @@ class TestRuntimeGraph(unittest.TestCase):
 
     def test_validation_clean_completion(self) -> None:
         state = create_initial_state("Clean task")
-        with patch("skill.framework.runtime.nodes.run_python_linter", return_value={"success": True, "executed": True}), \
-             patch("skill.framework.runtime.nodes.run_js_linter", return_value={"success": True, "executed": True}):
+        with patch.object(nodes, "run_python_linter", return_value={"success": True, "executed": True}), \
+             patch.object(nodes, "run_js_linter", return_value={"success": True, "executed": True}):
             res = validation_node(state)
             self.assertEqual(res["status"], "completed")
             self.assertIn("Successfully orchestrated task", res["result"])

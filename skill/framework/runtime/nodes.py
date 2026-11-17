@@ -6,7 +6,23 @@ import os
 from pathlib import Path
 from typing import Any, Literal, Optional, Tuple
 
-from pydantic import BaseModel, Field
+try:
+    from pydantic import BaseModel, Field
+except ImportError:
+    class BaseModel:  # type: ignore[no-redef]
+        def __init__(self, **kwargs: Any) -> None:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+
+        def model_dump(self) -> dict[str, Any]:
+            return {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
+
+        def dict(self) -> dict[str, Any]:
+            return self.model_dump()
+
+    def Field(*args: Any, **kwargs: Any) -> Any:  # type: ignore[no-redef]
+        default = kwargs.get("default", Ellipsis)
+        return default if default is not Ellipsis else None
 
 from .state import AgentState
 from .tools import (
