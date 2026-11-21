@@ -92,21 +92,6 @@ Keep in mind:
 
 Copy the template for your host from `skill/dependencies/utils/tools/mcp-sequential-thinking/adapters/` and follow the [MCP setup guide](skill/dependencies/utils/tools/mcp-sequential-thinking/README.md). No configuration file can start or approve an MCP server; the host does that, and the tool must appear in the host before it is considered active.
 
-<<<<<<< HEAD
-## Optional dependency setup
-
-The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
-=======
-## Optional dependency setup
-
-The installer is not required by the preflight. It installs packages and may write `.env`, so inspect it first and run it from its directory:
->>>>>>> master
-
-```text
-cd skill/dependencies/installation
-python install.py
-```
-
 ## Validate
 
 Run with Python 3.10 or later:
